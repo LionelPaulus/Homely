@@ -1,19 +1,16 @@
 <?
 function url_shortener($longUrl){
-  $postdata = http_build_query(
-      array(
-          'longUrl' => $longUrl
-      )
-  );
+  $raw = json_encode(array('longUrl' => $longUrl));
 
   $opts = array('http' =>
       array(
           'method'  => 'POST',
-          'header'  => 'Content-type: application/x-www-form-urlencoded',
-          'content' => $postdata
+          'header'  => 'Content-type: application/json',
+          'content' => $raw
       )
   );
 
   $context  = stream_context_create($opts);
-  return(file_get_contents('https://www.googleapis.com/urlshortener/v1/url?key='.GOOGLE_API_KEY, false, $context));
+  $result = json_decode(file_get_contents('https://www.googleapis.com/urlshortener/v1/url?key='.GOOGLE_API_KEY, false, $context));
+  return $result->id;
 }
