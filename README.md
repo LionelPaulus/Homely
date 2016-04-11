@@ -1,2 +1,2 @@
 # Homely
-Séances cinémas entre amis et à la maison
+Séances cinéma entre amis et à la maison
