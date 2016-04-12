@@ -7,7 +7,7 @@ define('THEMOVIEDB_API_KEY', '18e60637716db2e62d06a0e2a8c0f026');
 // DEFINE RESSOURCES
 define('USE_RESETCSS', true);
 define('USE_BOOTSTRAP', false);
-define('USE_JQUERY', false);
+define('USE_JQUERY', true);
 define('USE_SCROLLREVEAL', false); // https://github.com/jlmakes/scrollreveal.js
 define('USE_EMBEBJS', false); // https://embedjs.readme.io
 
