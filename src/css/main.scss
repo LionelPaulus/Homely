@@ -1,0 +1,42 @@
+html, body {
+  font-family: Roboto;
+  font-weight: lighter;
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+header {
+  width: auto;
+  height: 64px;
+  background-color: white;
+  border-bottom: 1px solid #E0E0E0;
+
+  nav ul li {
+    display: inline-block;
+  }
+
+  nav {
+    float: right;
+    margin-top: 50px;
+    margin-right: 100px;
+  }
+
+  li {
+    margin: 20px;
+  }
+}
+
+footer {
+  height: 50px;
+  background-color: #263238;
+  color: white;
+
+  img {
+    height: 40px;
+    float: right;
+    margin-top: -10px;
+  }
+}
+
+@import "buttons";
+@import "home";

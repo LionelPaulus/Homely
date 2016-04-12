@@ -13,19 +13,19 @@
   <? } if(USE_EMBEBJS){ ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/embed.js/3.6.2/embed.min.css">
   <? } ?>
-  <link rel="stylesheet" href="<?= URL ?>src/css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,100italic,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
+  <!-- <link rel="import" href="http://www.polymer-project.org/components/core-icons/core-icons.html"> -->
+  <link rel="stylesheet" href="<?= URL ?>src/css/main.css">
 </head>
 
 <body class="page-<?= $class ?>">
   <header>
-    <h1>Mon site</h1>
+    <h1>Homely</h1>
 
     <nav>
-      <a href="<?= URL ?>">Home</a>
-      <a href="<?= URL ?>about">About</a>
-      <a href="<?= URL ?>news">News</a>
-      <br>
-      <a href="<?= URL ?>news/article-1/">Article 1</a>
-      <a href="<?= URL ?>news/article-2/">Article 2</a>
+      <ul>
+        <li><a href=""></a></li>
+      </ul>
     </nav>
   </header>

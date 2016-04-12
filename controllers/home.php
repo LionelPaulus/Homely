@@ -1,3 +1,4 @@
 <?php
-  $title = 'Mon site';
+  $title = 'Homely';
   $class = 'home';
+

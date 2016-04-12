@@ -1,5 +1,8 @@
   <footer>
-    Footer
+    <p>
+      This product uses the TMDb API but is not endorsed or certified by TMDb.
+    </p>
+    <img src="src/images/powered.png" alt="Powered by Themoviedb">
   </footer>
   <? if(USE_JQUERY){ ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
