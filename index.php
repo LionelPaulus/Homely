@@ -8,6 +8,8 @@ $q = empty($_GET['q']) ? '' : $_GET['q'];
 
 if($q == '')
   $page = 'home';
+elseif($q == 'create-event')
+  $page = 'create-event';
 else
   $page = '404';
 
