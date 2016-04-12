@@ -14,18 +14,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/embed.js/3.6.2/embed.min.css">
   <? } ?>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,100italic,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
-  <!-- <link rel="import" href="http://www.polymer-project.org/components/core-icons/core-icons.html"> -->
   <link rel="stylesheet" href="<?= URL ?>src/css/main.css">
 </head>
 
 <body class="page-<?= $class ?>">
-  <header>
-    <h1>Homely</h1>
-
+  <div class="sidebar">
+    <div><i class="material-icons">inbox</i><span class="link-name">Inbox</span></div>
+    <div><i class="material-icons">settings_system_daydream</i>System Info</div>
+    <div><i class="material-icons">cloud</i>Cloud</div>
+    <div><i class="material-icons">settings</i>Settings</div>
     <nav>
       <ul>
-        <li><a href=""></a></li>
+        <li><i class="material-icons">home</i>Home</li>
       </ul>
     </nav>
+  </div>
+  <header>
+    <li id="menuBtn" class="material-icons menuBtn">menu</li>
+    <img src="src/images/logo.png" class="logo" alt="Logo">
   </header>

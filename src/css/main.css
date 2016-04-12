@@ -4,19 +4,40 @@ html, body {
   background-color: #f2f2f2;
   height: 100%; }
 
+.sidebar {
+  position: absolute;
+  z-index: 11;
+  overflow: auto;
+  width: 275px;
+  height: 100%;
+  left: -290px;
+  opacity: 0;
+  background-color: #455A64;
+  color: #FFF;
+  transition: all 350ms ease;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  font-size: 20px; }
+  .sidebar .link-name {
+    display: inline-block; }
+  .sidebar i {
+    font-size: 30px;
+    margin: 20px; }
+
 header {
   width: auto;
   height: 64px;
-  background-color: white;
-  border-bottom: 1px solid #E0E0E0; }
-  header nav ul li {
-    display: inline-block; }
-  header nav {
-    float: right;
-    margin-top: 50px;
-    margin-right: 100px; }
-  header li {
-    margin: 20px; }
+  background-color: #263238;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+  header #menuBtn {
+    font-size: 45px;
+    color: white;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 15px; }
+  header .logo {
+    height: 45px;
+    margin-top: 10px;
+    margin-left: 80px; }
 
 footer {
   height: 50px;
@@ -37,7 +58,8 @@ footer {
   border-radius: 2px;
   font-size: 0.9em;
   background-color: #fff;
-  color: #646464; }
+  color: #646464;
+  cursor: pointer; }
 
 .button > paper-ripple {
   border-radius: 2px;
@@ -196,10 +218,10 @@ footer {
   background-image: url(../images/bg.jpg);
   background-size: cover; }
   .page-home .background .content {
-    padding-top: 10%;
+    padding-top: 15%;
     text-align: center;
     color: white;
-    width: 400px;
+    width: 300px;
     margin-left: auto;
     margin-right: auto; }
     .page-home .background .content h1 {
