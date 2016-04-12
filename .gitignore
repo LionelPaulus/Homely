@@ -1,4 +1,4 @@
 /cache/
 /vendor/
-/config/url.txt
 /composer.lock
+config/url.txt
