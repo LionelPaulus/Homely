@@ -1,5 +1,5 @@
 # Homely
-Séances cinéma entre amis et à la maison
+Cinema sessions with friends and at home
 
 # Requirement
 * [Composer](https://getcomposer.org)
