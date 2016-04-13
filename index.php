@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 require 'config/config.php';
 require 'config/database.php';
@@ -8,7 +8,7 @@ $q = empty($_GET['q']) ? '' : $_GET['q'];
 
 if($q == '')
   $page = 'home';
-elseif($q == 'create-event')
+else if($q == 'create-event')
   $page = 'create-event';
 else
   $page = '404';
