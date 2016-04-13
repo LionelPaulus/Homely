@@ -10,6 +10,8 @@ if($q == '')
   $page = 'home';
 else if($q == 'create-event')
   $page = 'create-event';
+else if($q == 'myevents')
+  $page = 'myevents';
 else
   $page = '404';
 

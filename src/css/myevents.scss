@@ -1,0 +1,46 @@
+.page-myevents {
+  .movie-card {
+    color: inherit;
+  }
+
+  .action-button {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+
+    a {
+      font-size: 30px;
+    }
+  }
+
+  .mui-container {
+    max-width: 400px;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    p {
+      b {
+        font-weight: 300;
+      }
+    }
+
+    .mui-col-xs-2 {
+      position: relative;
+
+      i {
+        position: absolute;
+        top: 12px;
+        font-size: 45px;
+      }
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+}

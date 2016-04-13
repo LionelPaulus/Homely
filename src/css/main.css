@@ -7,6 +7,9 @@ html, body {
 h1, h2, h3, h4 {
   font-weight: lighter; }
 
+#mui-overlay {
+  z-index: 0; }
+
 .sidebar {
   position: absolute;
   z-index: 11;
@@ -19,7 +22,10 @@ h1, h2, h3, h4 {
   color: #FFF;
   transition: all 350ms ease;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  font-size: 20px; }
+  font-size: 18px; }
+  .sidebar a {
+    color: inherit;
+    text-decoration: none; }
   .sidebar .link-name {
     display: inline-block; }
   .sidebar i {
@@ -36,7 +42,8 @@ header {
     color: white;
     position: absolute;
     margin-top: 15px;
-    margin-left: 15px; }
+    margin-left: 15px;
+    user-select: none; }
   header .logo {
     width: 173px;
     margin-left: auto;
@@ -241,6 +248,32 @@ footer {
     .page-home .background .content .button {
       margin-top: 20px;
       width: 170px; }
+
+.page-myevents .movie-card {
+  color: inherit; }
+.page-myevents .action-button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px; }
+  .page-myevents .action-button a {
+    font-size: 30px; }
+.page-myevents .mui-container {
+  max-width: 400px;
+  position: relative; }
+  .page-myevents .mui-container img {
+    width: 100%; }
+  .page-myevents .mui-container p b {
+    font-weight: 300; }
+  .page-myevents .mui-container .mui-col-xs-2 {
+    position: relative; }
+    .page-myevents .mui-container .mui-col-xs-2 i {
+      position: absolute;
+      top: 12px;
+      font-size: 45px; }
+  .page-myevents .mui-container h1 {
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px; }
 
 .mui-container {
   margin-top: 20px; }

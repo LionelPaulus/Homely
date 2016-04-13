@@ -1,4 +1,4 @@
 <?php
-  $title = 'myevents';
+  $title = 'Homely';
   $class = 'myevents';
 
