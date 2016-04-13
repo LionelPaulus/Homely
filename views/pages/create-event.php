@@ -1,7 +1,7 @@
 <div class="mui-container">
   <div class="mui-panel">
     <form>
-      <legend>Create a cinema session</legend>
+      <legend>Create a movie session</legend>
       <div class="mui-row">
         <div class="mui-col-xs-6">
           <div class="mui-textfield">
