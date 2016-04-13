@@ -1,9 +1,9 @@
 <?php
 
-define('DB_HOST','localhost');
-define('DB_NAME','homely');
-define('DB_USER','root');
-define('DB_PASS','root');
+define('DB_HOST','178.79.169.213');
+define('DB_NAME','megaprem_homely');
+define('DB_USER','megaprem_homely');
+define('DB_PASS','LvsdvwZE*F?a');
 
 try
 {
