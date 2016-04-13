@@ -41,13 +41,6 @@
         </div>
       </div>
       <table class="mui-table mui-table--bordered">
-        <thead>
-          <tr>
-            <th>Poster</th>
-            <th><div class="mui--text-center">Title</div></th>
-            <th><div class="mui--text-right">Delete</div></th>
-          </tr>
-        </thead>
         <tbody>
         </tbody>
       </table>
