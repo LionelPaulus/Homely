@@ -40,6 +40,27 @@
           </div>
         </div>
       </div>
+      <table class="mui-table mui-table--bordered">
+        <thead>
+          <tr>
+            <th>Poster</th>
+            <th><div class="mui--text-center">Title</div></th>
+            <th><div class="mui--text-right">Delete</div></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="https://image.tmdb.org/t/p/w185/d5AfeWE8Ozk5QSbjB7rF3GN2d76.jpg"></td>
+            <td><div class="mui--text-center"><h1>Inception</h1></div></td>
+            <td><div class="mui--text-right"><button class="mui-btn mui-btn--raised mui-btn--danger"><i class="material-icons md-48 icons_logo">delete</i></button></div></td>
+          </tr>
+          <tr>
+            <td><img src="https://image.tmdb.org/t/p/w185/7GDj0mi7vtRfYXJkGJzQV7MOrin.jpg"></td>
+            <td><div class="mui--text-center"><h1>Le Bon, la Brute et le Truand</h1></div></td>
+            <td><div class="mui--text-right"><button class="mui-btn mui-btn--raised mui-btn--danger"><i class="material-icons md-48 icons_logo">delete</i></button></div></td>
+          </tr>
+        </tbody>
+      </table>
       <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
     </form>
   </div>
