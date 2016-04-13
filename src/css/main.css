@@ -74,6 +74,9 @@ footer {
     float: right;
     margin-top: 3px; }
 
+.mui-container {
+  margin-top: 20px; }
+
 /* Button */
 .button {
   display: inline-block;
@@ -257,6 +260,37 @@ footer {
       margin-top: 20px;
       width: 170px; }
 
+.page-event .event-infos i {
+  margin-top: 2px;
+  position: absolute; }
+.page-event .event-infos td {
+  min-width: 30px; }
+.page-event .movie-card {
+  color: inherit; }
+.page-event .movie {
+  max-width: 400px;
+  position: relative;
+  display: inline-block; }
+  .page-event .movie img {
+    width: 100%; }
+  .page-event .movie p b {
+    font-weight: 300; }
+  .page-event .movie .mui-col-xs-2 {
+    position: relative; }
+    .page-event .movie .mui-col-xs-2 i {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 45px; }
+  .page-event .movie h1 {
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px; }
+.page-event .mui--text-right {
+  display: inline; }
+.page-event .event-infos {
+  font-size: 18px; }
+
 .page-myevents .movie-card {
   color: inherit; }
 .page-myevents .action-button {
@@ -283,14 +317,12 @@ footer {
     margin-top: 0px;
     margin-bottom: 0px; }
 
-.mui-container {
-  margin-top: 20px; }
-  .mui-container table img {
-    height: 100px; }
-  .mui-container table h1 {
-    font-size: 18px;
-    line-height: 1; }
-  .mui-container table .material-icons {
-    line-height: 1.5; }
+.page-create-event .mui-container table img {
+  height: 100px; }
+.page-create-event .mui-container table h1 {
+  font-size: 18px;
+  line-height: 1; }
+.page-create-event .mui-container table .material-icons {
+  line-height: 1.5; }
 
 /*# sourceMappingURL=main.css.map */

@@ -98,7 +98,12 @@ footer {
   }
 }
 
+.mui-container {
+  margin-top: 20px;
+}
+
 @import "buttons";
 @import "home";
+@import "event";
 @import "myevents";
 @import "create-event";

@@ -1,0 +1,53 @@
+.page-event {
+  .event-infos {
+    i {
+      margin-top: 2px;
+      position: absolute;
+    }
+    td {
+      min-width: 30px;
+    }
+  }
+  .movie-card {
+    color: inherit;
+  }
+  .movie {
+    max-width: 400px;
+    position: relative;
+    display: inline-block;
+
+    img {
+      width: 100%;
+    }
+
+    p {
+      b {
+        font-weight: 300;
+      }
+    }
+
+    .mui-col-xs-2 {
+      position: relative;
+
+      i {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        font-size: 45px;
+      }
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .mui--text-right {
+    display: inline;
+  }
+  .event-infos {
+    font-size: 18px;
+  }
+}
