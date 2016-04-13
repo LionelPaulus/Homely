@@ -1,12 +1,13 @@
 <?
 require 'vendor/autoload.php';
-$cache = new iProDev\Util\EasyCache();
+$cache = new Gilbitron\Util\SimpleCache();
 
 function url_shortener($longUrl){
   global $cache;
 
-  $result = $cache->get($longUrl);
+  $result = $cache->get_cache($longUrl);
   if(!$result) {
+    echo "pas cache";
     $raw = json_encode(array('longUrl' => $longUrl));
 
     $opts = array('http' =>
@@ -21,7 +22,7 @@ function url_shortener($longUrl){
     $result = json_decode(file_get_contents('https://www.googleapis.com/urlshortener/v1/url?key='.GOOGLE_API_KEY, false, $context));
     $result = $result->id;
 
-    $cache->set($longUrl, $result);
+    $cache->set_cache($longUrl, $result);
   }
   return $result;
 }

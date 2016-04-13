@@ -1,6 +1,6 @@
 {
     "require": {
-        "iprodev/php-easycache": "~1.2",
+        "gilbitron/php-simplecache": "~1.4",
         "facebook/php-sdk-v4" : "~5.0"
     }
 }
