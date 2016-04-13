@@ -48,6 +48,7 @@ header {
     position: absolute;
     margin-top: 15px;
     margin-left: 15px;
+    cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -260,11 +261,13 @@ footer {
       margin-top: 20px;
       width: 170px; }
 
-.page-event .event-infos i {
-  margin-top: 2px;
-  position: absolute; }
-.page-event .event-infos td {
-  min-width: 30px; }
+.page-event .event-infos {
+  font-size: 18px; }
+  .page-event .event-infos i {
+    margin-top: 2px;
+    position: absolute; }
+  .page-event .event-infos td {
+    min-width: 30px; }
 .page-event .movie-card {
   color: inherit; }
 .page-event .movie {
@@ -288,8 +291,11 @@ footer {
     margin-bottom: 0px; }
 .page-event .mui--text-right {
   display: inline; }
-.page-event .event-infos {
-  font-size: 18px; }
+.page-event .are-you-in {
+  width: 164px;
+  margin: auto; }
+  .page-event .are-you-in i {
+    padding-top: 5px; }
 
 .page-myevents .movie-card {
   color: inherit; }

@@ -1,10 +1,15 @@
 <div class="mui-container">
   <div class="mui-panel">
+    <h2 class="mui--text-center">Are you in ?</h2>
+    <div class="are-you-in">
+      <button class="mui-btn mui-btn--primary"><i class="material-icons md-48 icons_logo">done</i></button>
+      <button class="mui-btn mui-btn--danger"><i class="material-icons md-48 icons_logo">clear</i></button>
+    </div>
     <h1>Movie session</h1>
     <table class="mui-table mui-table--bordered event-infos">
       <tbody>
         <tr>
-          <td><i class="material-icons md-48 icons_logo">account_circle</i></td>
+          <td><i class="material-icons md-48 icons_logo">home</i></td>
           <td>Antoine Moreaux</td>
         </tr>
         <tr>
@@ -30,36 +35,32 @@
     </table>
     <h2>Proposed movies</h2>
     <div class="mui-container movie">
-      <a href="#" class="movie-card" alt="Movie">
-        <img src="https://image.tmdb.org/t/p/w300/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg" alt="Movie backdrop">
-        <div class="mui-panel">
-          <div class="mui-row">
-            <div class="mui-col-xs-10">
-              <h1>Batman Versus Superman</h1>
-              <p>Julie, Léa and Mathilde liked</b></p>
-            </div>
-            <div class="mui-col-xs-2">
-              <i class="material-icons md-48 icons_logo">favorite_border</i>
-            </div>
+      <img src="https://image.tmdb.org/t/p/w300/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg" alt="Movie backdrop">
+      <div class="mui-panel">
+        <div class="mui-row">
+          <div class="mui-col-xs-10">
+            <h1>Batman Versus Superman</h1>
+            <p>Julie, Léa and Mathilde liked</b></p>
+          </div>
+          <div class="mui-col-xs-2">
+            <i class="material-icons md-48 icons_logo">favorite_border</i>
           </div>
         </div>
-      </a>
+      </div>
     </div>
     <div class="mui-container movie">
-      <a href="#" class="movie-card" alt="Movie">
-        <img src="https://image.tmdb.org/t/p/w300/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg" alt="Movie backdrop">
-        <div class="mui-panel">
-          <div class="mui-row">
-            <div class="mui-col-xs-10">
-              <h1>Batman Versus Superman</h1>
-              <p>Julie, Léa and Mathilde liked</b></p>
-            </div>
-            <div class="mui-col-xs-2">
-              <i class="material-icons md-48 icons_logo">favorite_border</i>
-            </div>
+      <img src="https://image.tmdb.org/t/p/w300/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg" alt="Movie backdrop">
+      <div class="mui-panel">
+        <div class="mui-row">
+          <div class="mui-col-xs-10">
+            <h1>Batman Versus Superman</h1>
+            <p>Julie, Léa and Mathilde liked</b></p>
+          </div>
+          <div class="mui-col-xs-2">
+            <i class="material-icons md-48 icons_logo">favorite_border</i>
           </div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </div>
