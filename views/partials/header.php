@@ -16,15 +16,10 @@
 
 <body class="page-<?= $class ?>">
   <div class="sidebar">
-    <div><i class="material-icons">inbox</i><span class="link-name">Inbox</span></div>
-    <div><i class="material-icons">settings_system_daydream</i>System Info</div>
-    <div><i class="material-icons">cloud</i>Cloud</div>
-    <div><i class="material-icons">settings</i>Settings</div>
-    <nav>
-      <ul>
-        <li><i class="material-icons">home</i>Home</li>
-      </ul>
-    </nav>
+    <div><a href="<?= URL ?>"><i class="material-icons">home</i>Home</a></div>
+    <div><a href="<?= URL ?>myevents"><i class="material-icons">event</i>My movie sessions</a></div>
+    <div><a href="<?= URL ?>create-event"><i class="material-icons">add_box</i>Create a movie session</a></div>
+    <div><a href="<?= URL ?>settings"><i class="material-icons">settings</i>Settings</a></div>
   </div>
   <header>
     <li id="menuBtn" class="material-icons menuBtn">menu</li>
