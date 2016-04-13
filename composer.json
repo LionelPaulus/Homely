@@ -1,5 +1,6 @@
 {
     "require": {
-        "iprodev/php-easycache": "~1.2"
+        "iprodev/php-easycache": "~1.2",
+        "facebook/php-sdk-v4" : "~5.0"
     }
 }
