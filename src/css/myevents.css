@@ -1,0 +1,27 @@
+.page-myevents .movie-card {
+  color: inherit; }
+.page-myevents .action-button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px; }
+  .page-myevents .action-button a {
+    font-size: 30px; }
+.page-myevents .mui-container {
+  max-width: 400px;
+  position: relative; }
+  .page-myevents .mui-container img {
+    width: 100%; }
+  .page-myevents .mui-container p b {
+    font-weight: 300; }
+  .page-myevents .mui-container .mui-col-xs-2 {
+    position: relative; }
+    .page-myevents .mui-container .mui-col-xs-2 i {
+      position: absolute;
+      top: 12px;
+      font-size: 45px; }
+  .page-myevents .mui-container h1 {
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px; }
+
+/*# sourceMappingURL=myevents.css.map */

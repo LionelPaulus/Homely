@@ -4,8 +4,6 @@
 
 	$errors = array();
 
-	print_r($_POST['movies']);
-
 	if(!empty($_POST))
 	{
 		$date 	= date($_POST['date']);
