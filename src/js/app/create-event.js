@@ -11,10 +11,10 @@ $(document).ready(function() {
 
 
     var baseUrl 	= 'http://api.themoviedb.org/3/',
-        mode 	= 'search/multi?query=',
+        mode 		= 'search/multi?query=',
         input,
         movieName,
-        key 	= '&api_key=52b219f9c6d4de9c68f38eb1bcb73a8f';
+        key 		= '&api_key=52b219f9c6d4de9c68f38eb1bcb73a8f';
 
 
     // Auto complete ---

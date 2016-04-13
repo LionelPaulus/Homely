@@ -6,7 +6,7 @@
 
 	if(!empty($_POST))
 	{
-		$date 	= date($_POST['date']);
+		$date 	= strtotime($_POST['date']);
 		$time 	= $_POST['time'];
 		$owner 	= $_SESSION['user']['id'];
 		$place	= $_POST['place'];
