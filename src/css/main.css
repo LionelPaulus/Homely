@@ -47,8 +47,7 @@ header {
 
 footer {
   min-height: 50px;
-  background-color: #263238;
-  color: white; }
+  background-color: #CFD8DC; }
   footer .mui-row {
     margin-left: 0px;
     margin-right: 0px; }
@@ -242,5 +241,8 @@ footer {
     .page-home .background .content .button {
       margin-top: 20px;
       width: 170px; }
+
+.mui-container {
+  margin-top: 20px; }
 
 /*# sourceMappingURL=main.css.map */
