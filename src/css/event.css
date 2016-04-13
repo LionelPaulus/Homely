@@ -1,0 +1,32 @@
+.page-event .event-infos i {
+  margin-top: 2px;
+  position: absolute; }
+.page-event .event-infos td {
+  min-width: 30px; }
+.page-event .movie-card {
+  color: inherit; }
+.page-event .movie {
+  max-width: 400px;
+  position: relative;
+  display: inline-block; }
+  .page-event .movie img {
+    width: 100%; }
+  .page-event .movie p b {
+    font-weight: 300; }
+  .page-event .movie .mui-col-xs-2 {
+    position: relative; }
+    .page-event .movie .mui-col-xs-2 i {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 45px; }
+  .page-event .movie h1 {
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px; }
+.page-event .mui--text-right {
+  display: inline; }
+.page-event .event-infos {
+  font-size: 18px; }
+
+/*# sourceMappingURL=event.css.map */

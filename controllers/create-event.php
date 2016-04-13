@@ -11,21 +11,32 @@
 		$owner 	= $_SESSION['user']['id'];
 		$place	= $_POST['place'];
 		$desc 	= $_POST['desc'];
-		$movies = $_POST['movies'];
+
+		if(isset($_POST['movies']))
+			$movies = $_POST['movies'];
 
 		if(isset($_POST['vote']))
-		  $vote = ($_POST['vote'] == true) ? 1 : 0;
+			$vote = ($_POST['vote'] == true) ? 1 : 0;
+		else
+		{
+			$vote = 0;
+		}
 
 		if(empty($time))
 		{
 			$errors['time'] = 'Please enter an hour';
 		}
 
+		if(empty($movies))
+		{
+			$errors['movies'] = 'Please chose at least one movie';
+		}
+
 		if(empty($date))
 		{
 			$errors['date'] = 'Please enter a date';
 		}
-		else if($date < date('Y-m-d'))
+		else if(date('Y-m-d', $date) < date('Y-m-d'))
 		{
 			$errors['date'] = 'Please enter a date greater than today';
 		}
@@ -46,7 +57,7 @@
 
 		if(empty($errors))
 		{
-			$prepare = $pdo->prepare('INSERT INTO rooms(owner, day, time, place, description, vote) VALUES (:owner, :day, :time, :place, :description, :vote)');
+			$prepare = $pdo->prepare('INSERT INTO rooms(owner, day, time, place, description, vote, actual_movie) VALUES (:owner, :day, :time, :place, :description, :vote, :actual_movie)');
 
 			$prepare->bindValue('owner', $owner);
 			$prepare->bindValue('day', $date);
@@ -54,6 +65,7 @@
 			$prepare->bindValue('place', $place);
 			$prepare->bindValue('description', $desc);
 			$prepare->bindValue('vote', $vote);
+			$prepare->bindValue('actual_movie', $movies[0]);
 
 			$prepare->execute();
 
@@ -62,8 +74,6 @@
 			$query	= $prepare->fetchAll();
 
 			$count = 0;
-
-			print_r('test');
 
 			foreach($query as $_results)
 			{

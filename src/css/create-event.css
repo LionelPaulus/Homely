@@ -1,12 +1,10 @@
-.mui-container {
-  margin-top: 20px; }
-  .mui-container table img {
-    height: 100px; }
-  .mui-container table h1 {
-    font-size: 18px;
-    line-height: 1; }
-  .mui-container table .material-icons {
-    line-height: 1.5; }
+.page-create-event .mui-container table img {
+  height: 100px; }
+.page-create-event .mui-container table h1 {
+  font-size: 18px;
+  line-height: 1; }
+.page-create-event .mui-container table .material-icons {
+  line-height: 1.5; }
 
 ul.ui-autocomplete {
   background: #fff;
