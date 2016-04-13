@@ -2,7 +2,6 @@
 
 require 'config/config.php';
 require 'config/database.php';
-require 'controllers/functions/url_shortener.php';
 
 $q = empty($_GET['q']) ? '' : $_GET['q'];
 
@@ -12,8 +11,8 @@ else if($q == 'create-event')
   $page = 'create-event';
 else if($q =='myevents')
 	$page='myevents';
-else if($q =='event-info')
-	$page='event-info';
+else if($q =='event')
+	$page='event';
 else if($q =='info-films')
 	$page='info-films';
 else
