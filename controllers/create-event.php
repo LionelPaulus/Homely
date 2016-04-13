@@ -14,19 +14,7 @@
 		$movies = $_POST['movies'];
 
 		if(isset($_POST['vote']))
-		{
-			if($_POST['vote'] == 'true'){
-				$vote = 1;
-			}
-			else
-			{
-				$vote = 0;
-			}
-		}
-		else
-		{
-			$vote = 0;
-		}
+		  $vote = ($_POST['vote'] == true) ? 1 : 0;
 
 		if(empty($time))
 		{
