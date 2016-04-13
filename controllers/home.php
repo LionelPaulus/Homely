@@ -1,5 +1,5 @@
 <?php
-	
+
   	require_once dirname(__DIR__) . '/vendor/autoload.php';
 
   	$class = "home";
@@ -12,7 +12,7 @@
 	  ]);
 	$helper = $fb->getRedirectLoginHelper();
 	$permissions = ['email']; // Optional
-		
+
 	try {
 		if (isset($_SESSION['facebook_access_token'])) {
 			$accessToken = $_SESSION['facebook_access_token'];
@@ -65,7 +65,7 @@
 			echo 'Facebook SDK returned an error: ' . $e->getMessage();
 			exit;
 		}
-		
+
 		$prepare = $pdo->prepare('SELECT * FROM WHERE id = $id ');
 		$prepare->execute();
 		$query = $prepare->fetchAll();
@@ -84,7 +84,7 @@
 		$_SESSION['user']['name'] = $profile['first_name'] . ' ' . $profile['last_name'];
 		$_SESSION['user']['id'] = $profile['id'];
 
-		header('Location: create-event');
+		header('Location: myevents');
 		exit;
 	}
 	else
