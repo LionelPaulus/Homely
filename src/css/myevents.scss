@@ -1,4 +1,17 @@
 .page-myevents {
+  .empty-background {
+    width: 300px;
+    margin: auto;
+
+    h1 {
+      font-size: 25px;
+    }
+
+    img {
+      width: 300px;
+    }
+  }
+
   .movie-card {
     color: inherit;
   }

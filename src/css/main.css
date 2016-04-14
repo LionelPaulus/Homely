@@ -297,6 +297,13 @@ footer {
   .page-event .are-you-in i {
     padding-top: 5px; }
 
+.page-myevents .empty-background {
+  width: 300px;
+  margin: auto; }
+  .page-myevents .empty-background h1 {
+    font-size: 25px; }
+  .page-myevents .empty-background img {
+    width: 300px; }
 .page-myevents .movie-card {
   color: inherit; }
 .page-myevents .action-button {
