@@ -19,7 +19,7 @@
 ?>
       <div class="mui-container">
         <a href="<?php echo 'event/' . $_result->id ?>" class="movie-card" alt="Movie">
-          <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->backdrop_path ?>" alt="Movie backdrop">
+          <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->backdrop_path ?>" alt="Movie backdrop" onerror='imageChange(this)'>
           <div class="mui-panel">
             <div class="mui-row">
               <div class="mui-col-xs-2">

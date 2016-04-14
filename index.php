@@ -11,8 +11,8 @@ else if($q == 'create-event')
   $page = 'create-event';
 else if($q =='myevents')
 	$page='myevents';
-else if($q =='info-films')
-	$page='info-films';
+else if(preg_match('/^movie\/[-a-z0-9]+$/',$q))
+	$page='movie';
 else if(preg_match('/^event\/[-a-z0-9]+$/',$q))
 	$page = 'event';
 else

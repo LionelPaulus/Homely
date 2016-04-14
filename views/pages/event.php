@@ -69,7 +69,7 @@
 
                   <tr data-id='<?=$_movie->movie_id?>'>
                     <td>
-                      <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->poster_path ?>">
+                      <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->poster_path ?>" onerror='imageChange(this)'>
                     </td>
                     <td>
                       <div class="mui--text-center">

@@ -15,7 +15,7 @@ $("body").on(event, function(evt){
 
 function imageChange(image) {
     image.onerror = "";
-    image.src = "../src/images/no_thumb.png";
+    image.src = "http://homely-app.com/src/images/no_thumb.png";
     return true;
 }
 
