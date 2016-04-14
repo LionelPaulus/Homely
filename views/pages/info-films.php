@@ -1,6 +1,6 @@
  
  <div class="mui-container container_total">
- 	<div class='mui-container-fluid container_background'>  
+ 	<div class='container_background'>  
  		 
  		<img class='background_image'src='src/images/glad.jpg'/>
  		</div>
