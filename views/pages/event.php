@@ -272,7 +272,7 @@
         }
     ?>
     <div class="mui-textfield">
-      <input id="url" type="text" value="<?= url_shortener(URL."event/".$event_id) ?>" disabled>
+      <input id="url" type="text" value="<?= url_shortener(URL."event/".$id) ?>" disabled>
       <label>Event URL</label>
     </div>
   </div>
