@@ -82,11 +82,22 @@
                         </div>
                     </tr>
 
-          <?php   endforeach;
+          <?php  endforeach;
                 endif; ?>
         </tbody>
       </table>
       <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+      <?php 
+        if(isset($_POST['movies_id'])){
+          foreach($movies_id as $key => $movie)
+          {
+        ?>
+            <input type="hidden" name="movies_id[]" value="<?= $movie ?>">
+            <input type="hidden" name="movies_type[]" value="<?= $movies_type[$key] ?>" data-id="<?= $movie ?>">
+      <?php
+          }
+        }
+        ?>
     </form>
 
     <?php if(!empty($errors)): // ERRORS
