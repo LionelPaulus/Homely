@@ -1,6 +1,6 @@
 // Sliding menu
 var ua =  navigator.userAgent,
-          event = (ua.match(/iPhone/i)) ? "touchstart" : "click";
+          event = (ua.match(/iPhone|Android/ig)) ? "touchstart" : "click";
 $("body").on(event, function(evt){
   if(!$(evt.target).hasClass("menuBtn")){
     $(".sidebar").css("left","-295px");

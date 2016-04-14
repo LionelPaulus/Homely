@@ -1,5 +1,10 @@
-<?php 
-      foreach($query as $_result): // FOREACH RESULT GET JSON FROM TMDB AND DISPLAY INFORMATIONS
+<? if(empty($query)){ ?>
+  <div class="empty-background">
+    <h1 class="mui--text-center">You have no movie session, create one !</h1>
+    <img src="src/images/empty.png">
+  </div>
+<? } else {
+    foreach($query as $_result): // FOREACH RESULT GET JSON FROM TMDB AND DISPLAY INFORMATIONS
       if($_result->movie_type == 'movie'){
         $movie = $cache->get_data($_result->actual_movie, 'http://api.themoviedb.org/3/movie/' . $_result->actual_movie . '?api_key=' . THEMOVIEDB_API_KEY);
         $movie = json_decode($movie);
@@ -11,9 +16,7 @@
         $movie = json_decode($movie);
         $title = $movie->name;
       }
-      
-    ?>
-
+?>
       <div class="mui-container">
         <a href="<?php echo 'event/' . $_result->id ?>" class="movie-card" alt="Movie">
           <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->backdrop_path ?>" alt="Movie backdrop">
@@ -44,6 +47,7 @@
                       echo date('d M', $_result->date);
 
                       $guest = array(); // GET GUESTS 
+
                       foreach($data as $_data){ // FOREACH EVENT CHECK IF GUEST IS IN THIS EVENT
                         if($_data->room_id == $_result->room_id)
                         {
@@ -70,9 +74,10 @@
           </div>
         </a>
       </div>
-<?php endforeach; ?>
-
-
+<?php
+    endforeach;
+  }
+?>
 <div class="action-button">
   <a href="<?= URL ?>create-event" class="mui-btn mui-btn--fab mui-btn--danger">+</a>
 </div>
