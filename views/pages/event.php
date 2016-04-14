@@ -15,14 +15,14 @@
             </center>
           </form>
           <br>
-          
+
         <?if($query[0]->vote == 0): ?>
           <form action="#" method="POST">
             <input type="hidden" name="type" value="triggerVote">
             <input type="hidden" name="vote" value="off">
             <center>
               <button class="mui-btn mui-btn--primary">
-                Add a vote 
+                Add a vote
               </button>
             </center>
           </form>
@@ -123,7 +123,7 @@
                 <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
                 <?php
               }
-            } elseif(empty($voted)) {
+            } elseif(empty($voted)) { $voted = true;
               ?>
               <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
               <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
