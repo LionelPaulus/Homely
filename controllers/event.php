@@ -85,7 +85,7 @@
 
 	  	$prepare->execute();
 
-	  	header('Location:'. $_SERVER['REDIRECT_URL']);
+	  	header('Location:'. $_SERVER['REDIRECT_URL'] . '#' . $movieId);
 	  	exit;
   	}
   	else if($_POST['type'] == 'remove')
@@ -108,26 +108,42 @@
   	else if($_POST['type'] == 'update')
   	{
   		$movies_id = $_POST['movies_id'];
-		$movies_type = $_POST['movies_type'];
+		  $movies_type = $_POST['movies_type'];
 
-		$i = 0;
+		  $i = 0;
 
-		$prepare = $pdo->prepare("DELETE FROM movies WHERE event_id = '$id'");
-		$prepare->execute();
+		  $prepare = $pdo->prepare("DELETE FROM movies WHERE event_id = '$id'");
+		  $prepare->execute();
 
-		foreach($movies_id as $_movie) 
-		{
-			$prepare = $pdo->prepare("INSERT INTO movies(event_id, movie_id, movie_type) VALUES (:event, :movie, :type)");
-	  		$prepare->bindValue('event', $id);
-	  		$prepare->bindValue('movie', $_movie);
-	  		$prepare->bindValue('type', $movies_type[$i]);
+  		foreach($movies_id as $_movie) 
+  		{
+  			$prepare = $pdo->prepare("INSERT INTO movies(event_id, movie_id, movie_type) VALUES (:event, :movie, :type)");
+  	  	$prepare->bindValue('event', $id);
+  	  	$prepare->bindValue('movie', $_movie);
+  	  	$prepare->bindValue('type', $movies_type[$i]);
 
-		  	$prepare->execute();
+  		  $prepare->execute();
 
-		  	header('Location:'. $_SERVER['REDIRECT_URL']);
-	  		exit;
-		}
+  		  header('Location:'. $_SERVER['REDIRECT_URL']);
+  	  	exit;
+  		}
   	}
+    else if($_POST['type'] == 'triggerVote')
+    {
+      if($_POST['vote'] == 'off')
+      {
+        $prepare = $pdo->prepare("UPDATE rooms SET vote = '1' WHERE id = '$id'");
+        $prepare->execute();
+      }
+      else
+      {
+        $prepare = $pdo->prepare("UPDATE rooms SET vote = '0' WHERE id = '$id'");
+        $prepare->execute();
+      }
+
+      header('Location:'. $_SERVER['REDIRECT_URL']);
+      exit;
+    }
   }
 
 

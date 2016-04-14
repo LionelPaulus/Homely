@@ -15,6 +15,31 @@
             </center>
           </form>
           <br>
+          
+        <?if($query[0]->vote == 0): ?>
+          <form action="#" method="POST">
+            <input type="hidden" name="type" value="triggerVote">
+            <input type="hidden" name="vote" value="off">
+            <center>
+              <button class="mui-btn mui-btn--primary">
+                Add a vote 
+              </button>
+            </center>
+          </form>
+          <br>
+        <? else: ?>
+          <form action="#" method="POST">
+            <input type="hidden" name="type" value="triggerVote">
+            <input type="hidden" name="vote" value="on">
+            <center>
+              <button class="mui-btn mui-btn--danger">
+                Remove vote from event
+              </button>
+            </center>
+          </form>
+          <br>
+        <?php endif; ?>
+
 
           <div class="mui-textfield">
             <input type="text" placeholder="Movie name" class="movieChoice">
@@ -207,7 +232,7 @@
       </tbody>
     </table>
     <h2>Proposed movies</h2>
-    <form action="#" method="POST">
+    <form class="formVote" action="#" method="POST">
 
     <?php
       if($query[0]->vote == 0)
@@ -260,7 +285,7 @@
               $title = $movie->name;
             }
               ?>
-            <div class="mui-container movie">
+            <div class="mui-container movie" id="<?= $_movie->movie_id ?>">
               <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][3] . $movie->backdrop_path ?>" alt="Movie backdrop " onerror='imageChange(this)'>
               <div class="mui-panel">
                 <div class="mui-row">
