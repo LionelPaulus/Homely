@@ -207,6 +207,7 @@
       </tbody>
     </table>
     <h2>Proposed movies</h2>
+    <form action="#" method="POST">
 
     <?php
       if($query[0]->vote == 0)
@@ -267,7 +268,6 @@
                     <h1><?= $title ?></h1>
                     <p><b>
                     <?php
-
                       $voteCount = 0;
 
                       foreach($query_vote as $_vote)
@@ -278,25 +278,28 @@
                         }
                       }
 
+                      if($voteCount > $actual)
+                        $actual = $voteCount;
+
                       echo $voteCount . ' liked';
                     ?>
                     </b></p>
                   </div>
                   <div class="mui-col-xs-2">
-                    <form action="#" method="POST">
-                      <input type="hidden" name="type" value="vote">
-                      <button name="whichMovie" value="<?= $_movie->movie_id ?>">
-                        <i class="material-icons md-48 icons_logo">favorite_border</i>
-                      </button>
-                    </form>
+                     <button name="whichMovie" value="<?= $_movie->movie_id ?>">
+                       <i class="material-icons md-48 icons_logo">favorite_border</i>
+                     </button>
                   </div>
-                  </div>
-                </div>
+                 </div>
+               </div>
               </div>
             <?php
           }
         }
-    ?>
+      ?>
+      <input type="hidden" name="type" value="vote">
+      <input type="hidden" name="max" value="<?= $actual ?>">
+    </form>
     <div class="mui-textfield">
       <input id="url" type="text" value="<?= url_shortener(URL."event/".$id) ?>" disabled>
       <label>Event URL</label>

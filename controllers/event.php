@@ -10,6 +10,8 @@
 
   $errors = array();
 
+  $actual = 0;
+
   $user = $_SESSION['user']['id'];
 
   $uri = explode('/', $_SERVER['REQUEST_URI']);
@@ -62,8 +64,18 @@
   	else if($_POST['type'] == 'vote')
   	{
   		$movieId = $_POST['whichMovie'];
-  		$prepare = $pdo->prepare("DELETE FROM votes WHERE event = '$id' AND user = '$user'");
 
+  		$prepare = $pdo->prepare("SELECT * FROM votes WHERE event = '$id' AND movie = '$movieId'");
+  		$prepare->execute();
+  		$vote_data = $prepare->fetchAll();
+
+  		if((count($vote_data)+1) >= $_POST['max'])
+  		{
+  			$prepare = $pdo->prepare("UPDATE rooms SET actual_movie = '$movieId' WHERE id = '$id'");
+  			$prepare->execute();
+  		}
+
+  		$prepare = $pdo->prepare("DELETE FROM votes WHERE event = '$id' AND user = '$user'");
 	  	$prepare->execute();
 
   		$prepare = $pdo->prepare("INSERT INTO votes(event, movie, user) VALUES (:event, :movie, :user)");
@@ -117,6 +129,7 @@
 		}
   	}
   }
+
 
 
 
