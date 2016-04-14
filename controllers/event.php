@@ -14,8 +14,8 @@
 
   $user = $_SESSION['user']['id'];
 
-  $uri = explode('/', $_SERVER['REQUEST_URI']);
-  $id = $uri[3];
+  preg_match('/event\/[0-9|A-z]+/', $q, $match);
+  $id = str_replace('event/', '', $match[0]);
 
   $prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN users ON rooms.owner = users.id WHERE rooms.id = '$id'");
   $prepare->execute();
@@ -121,6 +121,7 @@
   	  	$prepare->bindValue('event', $id);
   	  	$prepare->bindValue('movie', $_movie);
   	  	$prepare->bindValue('type', $movies_type[$i]);
+
 
   		  $prepare->execute();
 
