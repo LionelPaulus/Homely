@@ -11,4 +11,4 @@ $("body").on(event, function(evt){
     $(".sidebar").css("opacity","1");
     mui.overlay('on');
   }
- });
+});
