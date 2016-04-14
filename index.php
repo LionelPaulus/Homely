@@ -15,6 +15,8 @@ else if($q =='event')
 	$page='event';
 else if($q =='info-films')
 	$page='info-films';
+else if(preg_match('/^event\/[-a-z0-9]+$/',$q))
+	$page = 'event';
 else
   $page = '404';
 

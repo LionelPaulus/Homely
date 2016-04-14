@@ -1,12 +1,21 @@
-<?php foreach($query as $_result): // FOREACH RESULT GET JSON FROM TMDB AND DISPLAY INFORMATIONS
-
-      $movie = $cache->get_data($_result->actual_movie, 'http://api.themoviedb.org/3/movie/' . $_result->actual_movie . '?api_key=' . THEMOVIEDB_API_KEY);
-
-      $movie = json_decode($movie);
+<?php 
+      foreach($query as $_result): // FOREACH RESULT GET JSON FROM TMDB AND DISPLAY INFORMATIONS
+      if($_result->movie_type == 'movie'){
+        $movie = $cache->get_data($_result->actual_movie, 'http://api.themoviedb.org/3/movie/' . $_result->actual_movie . '?api_key=' . THEMOVIEDB_API_KEY);
+        $movie = json_decode($movie);
+        $title = $movie->title;
+      }
+      else
+      {
+        $movie = $cache->get_data($_result->actual_movie, 'http://api.themoviedb.org/3/tv/' . $_result->actual_movie . '?api_key=' . THEMOVIEDB_API_KEY);
+        $movie = json_decode($movie);
+        $title = $movie->name;
+      }
+      
     ?>
 
       <div class="mui-container">
-        <a href="#" class="movie-card" alt="Movie">
+        <a href="<?php echo 'event/' . $_result->id ?>" class="movie-card" alt="Movie">
           <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->backdrop_path ?>" alt="Movie backdrop">
           <div class="mui-panel">
             <div class="mui-row">
@@ -29,13 +38,11 @@
                 </i>
               </div>
               <div class="mui-col-xs-10">
-                <h1><?= $movie->title ?></h1>
+                <h1><?= $title ?></h1>
                 <p>
                   <?php 
-                    echo date('d M', $_result->day);
-                  ?>
-                  at <b><?= $_result->time ?></b> 
-                    <?php
+                      echo date('d M', $_result->date);
+
                       $guest = array(); // GET GUESTS 
                       foreach($data as $_data){ // FOREACH EVENT CHECK IF GUEST IS IN THIS EVENT
                         if($_data->room_id == $_result->room_id)

@@ -1,4 +1,9 @@
 <?php
+
+	require 'vendor/autoload.php';
+	$cache = new Gilbitron\Util\SimpleCache();
+	require 'functions/config_tmdb.php';
+
   	$title = 'Homely';
   	$class = 'create-event';
 
@@ -7,14 +12,16 @@
 	// ERRORS CHECKING ... 
 	if(!empty($_POST))
 	{
-		$date 	= strtotime($_POST['date']);
-		$time 	= $_POST['time'];
+		$date 	= strtotime($_POST['date'] . " " . $_POST['time']);
 		$owner 	= $_SESSION['user']['id'];
 		$place	= $_POST['place'];
 		$desc 	= $_POST['desc'];
 
-		if(isset($_POST['movies']))
-			$movies = $_POST['movies'];
+		if(isset($_POST['movies_id']))
+		{
+			$movies_id = $_POST['movies_id'];
+			$movies_type = $_POST['movies_type'];
+		}
 
 		if(isset($_POST['vote']))
 			$vote = ($_POST['vote'] == true) ? 1 : 0;
@@ -23,12 +30,7 @@
 			$vote = 0;
 		}
 
-		if(empty($time))
-		{
-			$errors['time'] = 'Please enter an hour';
-		}
-
-		if(empty($movies))
+		if(empty($movies_id))
 		{
 			$errors['movies'] = 'Please chose at least one movie';
 		}
@@ -60,15 +62,14 @@
 
 		if(empty($errors))
 		{
-			$prepare = $pdo->prepare('INSERT INTO rooms(owner, day, time, place, description, vote, actual_movie) VALUES (:owner, :day, :time, :place, :description, :vote, :actual_movie)');
+			$prepare = $pdo->prepare('INSERT INTO rooms(owner, date, place, description, vote, actual_movie) VALUES (:owner, :date, :place, :description, :vote, :actual_movie)');
 
 			$prepare->bindValue('owner', $owner);
-			$prepare->bindValue('day', $date);
-			$prepare->bindValue('time', $time);
+			$prepare->bindValue('date', $date);
 			$prepare->bindValue('place', $place);
 			$prepare->bindValue('description', $desc);
 			$prepare->bindValue('vote', $vote);
-			$prepare->bindValue('actual_movie', $movies[0]);
+			$prepare->bindValue('actual_movie', $movies_id[0]);
 
 			$prepare->execute();
 
@@ -92,18 +93,25 @@
 			$vote 	= '';
 			$time	= '';
 
-			foreach($movies as $_movie) // FOREACH MOVIE INSERT INTO MOVIE TABL
+			$i = 0;
+
+			foreach($movies_id as $_movie) // FOREACH MOVIE INSERT INTO MOVIE TABL
 			{
-				$prepare = $pdo->prepare('INSERT INTO movies(event_id, movie_id) VALUES (:event, :movie)');
+				$prepare = $pdo->prepare('INSERT INTO movies(event_id, movie_id, movie_type) VALUES (:event, :movie, :movie_type)');
 				$prepare->bindValue(':event', $count);
 				$prepare->bindValue(':movie', $_movie);
+				$prepare->bindValue(':movie_type', $movies_type[$i]);
 
 				$prepare->execute();
+
+				$i++;
+
 			}
 			// INESRT OWNER'S PARTICIPATION
-			$prepare = $pdo->prepare('INSERT INTO guests(user_id, room_id) VALUES (:user, :room)');
+			$prepare = $pdo->prepare('INSERT INTO guests(user_id, room_id, participation) VALUES (:user, :room, :participation)');
 			$prepare->bindValue(':user', $owner);
 			$prepare->bindValue(':room', $count);
+			$prepare->bindValue(':participation', '1');
 
 			$prepare->execute();
 
@@ -111,8 +119,8 @@
 
 
 
-			// header('Location:' . URL . 'show/' . $count . '/');
-			// exit;
+			header('Location:' . URL . 'event/' . $count);
+			exit;
 		}
 	}
 

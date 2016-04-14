@@ -25,6 +25,6 @@
   <header>
     <li id="menuBtn" class="material-icons menuBtn">menu</li>
     <div class="logo">
-      <img src="src/images/logo.png" alt="Logo">
+      <img src="<?= URL ?>src/images/logo.png" alt="Logo">
     </div>
   </header>

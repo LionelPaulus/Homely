@@ -42,6 +42,48 @@
       </div>
       <table class="mui-table mui-table--bordered">
         <tbody>
+          <?php if(isset($_POST['movies_id'])):
+                  foreach($_POST['movies_id'] as $key => $_movie): 
+
+                    $type = ($_POST['movies_type'][$key] == 'movie') ? 'movie' : 'tv';
+
+                    if($type == 'movie'){
+                      $movie = $cache->get_data($_movie, 'http://api.themoviedb.org/3/movie/' . $_movie . '?api_key=' . THEMOVIEDB_API_KEY);
+                      $movie = json_decode($movie); 
+                    }
+                    else if($type == 'tv'){
+                      $movie = $cache->get_data($_movie, 'http://api.themoviedb.org/3/tv/' . $_movie . '?api_key=' . THEMOVIEDB_API_KEY);
+                      $movie = json_decode($movie); 
+                     } ?>
+                    
+                    <tr data-id='<?= $_movie ?>'>
+                      <td>
+                        <img src="<?php echo $config['images']['base_url'] . $config['images']['poster_sizes'][1] . $movie->poster_path ?>">
+                      </td>
+                      <td>
+                        <div class="mui--text-center">
+                          <h1>
+                            <?php if($type == 'movie')
+                                  {
+                                    echo $movie->title;
+                                  }
+                                  else if($type == 'tv')
+                                  {
+                                    echo $movie->name;
+                                  } ?>
+                          </h1>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mui--text-right remove">
+                          <button type="button" class="mui-btn mui-btn--raised mui-btn--danger">
+                            <i class="material-icons md-48 icons_logo">delete</i>
+                          </button>
+                        </div>
+                    </tr>
+
+          <?php   endforeach;
+                endif; ?>
         </tbody>
       </table>
       <button type="submit" class="mui-btn mui-btn--raised">Submit</button>

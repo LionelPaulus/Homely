@@ -39,7 +39,8 @@ $(document).ready(function() {
 		            		return {
 		            			title : json.title,
 		            			id : json.id,
-		            			poster_path : json.poster_path
+		            			poster_path : json.poster_path,
+		            			media_type : json.media_type
 		            		}
 		            	}
 		            	else if(json.media_type == 'tv')
@@ -47,7 +48,8 @@ $(document).ready(function() {
 		            		return {
 		            			title : json.name,
 		            			id : json.id,
-		            			poster_path : json.poster_path
+		            			poster_path : json.poster_path,
+		            			media_type : json.media_type
 		            		}
 		            	}
 	            	}));
@@ -70,7 +72,8 @@ $(document).ready(function() {
 		    	$('<tr></tr>').attr('data-id', ui.item.id)
 		    				.append("<td><img src='http://image.tmdb.org/t/p/w154" + ui.item.poster_path + "'></td><td><div class='mui--text-center'><h1>" + ui.item.title + "</h1></div></td><td><div class='mui--text-right remove'><button type='button' class='mui-btn mui-btn--raised mui-btn--danger'><i class='material-icons md-48 icons_logo'>delete</i></button></div></td>")
 		    				.appendTo('tbody');
-		    	$('form').append("<input type='hidden' name='movies[]' value='" + ui.item.id + "'>")
+		    	$('form').append("<input type='hidden' name='movies_id[]' value='" + ui.item.id + "'>")
+		    	$('form').append("<input type='hidden' name='movies_type[]' value='" + ui.item.media_type + "' data-id='" + ui.item.id +"' >");
 		    }
 	    				
 
@@ -91,6 +94,7 @@ $(document).ready(function() {
 		$(this).parent().parent().parent().remove();
 
 		$("input[value='" + id + "']").remove();
+		$("input[data-id='" + id + "']").remove();
 	});
 
 
