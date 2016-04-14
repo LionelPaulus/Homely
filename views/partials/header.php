@@ -8,6 +8,7 @@
   <? if(USE_RESETCSS){ ?>
     <link rel="stylesheet" href="<?= URL ?>src/css/reset.min.css">
   <? } ?>
+  <link rel="icon" type="image/png" href="<?= URL ?>src/images/favicon.png" />
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,100italic,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="//cdn.muicss.com/mui-0.5.0/css/mui.min.css" rel="stylesheet" type="text/css" />
