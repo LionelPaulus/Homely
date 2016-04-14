@@ -3,7 +3,6 @@
 	require 'vendor/autoload.php';
 	$cache = new Gilbitron\Util\SimpleCache();
 	require 'functions/config_tmdb.php';
-
 	$title = 'Homely';
 	$class = 'myevents';
 

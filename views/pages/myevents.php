@@ -68,6 +68,7 @@
                         echo 'with <b>' . $guest[0] . ', ' . $guest[1] . ' & ' . $guest[2] . '</b>';
                       }
                     ?>
+                    <b>at <?= date('g:i a', $_result->date) ?></b>
                  </p>
               </div>
             </div>

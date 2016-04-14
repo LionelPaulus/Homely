@@ -1,5 +1,78 @@
 <div class="mui-container">
   <div class="mui-panel">
+
+    <?php 
+        if($query[0]->owner == $user)
+        {
+        ?>
+
+          <form action="#" method="POST">
+            <input type="hidden" name="type" value="remove">
+            <button class="mui-btn mui-btn--danger">
+              Supprimer cet évènement
+            </button>
+          </form>
+          <br>
+          
+          <div class="mui-textfield">
+            <input type="text" placeholder="Movie name" class="movieChoice">
+            <label>Modify movie list</label>
+            <br>
+          </div>
+
+          <form action="#" method="POST" class="update">
+            <table class="mui-table mui-table--bordered">
+              <tbody class="already">
+              <?php
+                foreach($query_movie as $_movie){
+                  if($_movie->movie_type == 'movie'){
+                    $movie  = $cache->get_data($_movie->movie_id, 'http://api.themoviedb.org/3/movie/' . $_movie->movie_id . '?api_key=' . THEMOVIEDB_API_KEY);
+                    $movie  = json_decode($movie);
+                    $title  = $movie->title;
+                    $type   = 'movie';  
+                  }
+                  else
+                  {
+                    $movie  = $cache->get_data($_movie->movie_id, 'http://api.themoviedb.org/3/tv/' . $_movie->movie_id . '?api_key=' . THEMOVIEDB_API_KEY);
+                    $movie  = json_decode($movie);
+                    $title  = $movie->name;
+                    $type   = 'tv';
+                  }
+                  ?>
+
+                  <tr data-id='<?=$_movie->movie_id?>'>
+                    <td>
+                      <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->poster_path ?>">
+                    </td>
+                    <td>
+                      <div class="mui--text-center">
+                        <h1><?= $title ?></h1>
+                      </div>
+                    </td>
+                    <td> 
+                      <div class="mui--text-right remove">
+                        <button type="button" class="mui-btn mui-btn--raised mui-btn--danger">
+                          <i class="material-icons md-48 icons_logo">delete</i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <input type="hidden" name="movies-id[]" value="<?= $movie->id ?>">
+                  <input type="hidden" name="movies_type[]" value="<?= $type ?>" data-id="<?= $movie->id ?>">
+
+               <?php } ?>
+              </tbody>
+            </table>
+            <input type="hidden" name="type" value="update">
+          </form>
+
+
+        <?php
+        }
+        else
+        {
+        ?>  
     <h2 class="mui--text-center">Are you in ?</h2>
     <div class="are-you-in">
       <form action="#" method="POST">
@@ -8,6 +81,8 @@
         <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
       </form>
     </div>
+     
+    
 
     
       <?php 
@@ -33,6 +108,8 @@
           }
         }
       ?>
+
+      <?php } ?>
 
     <h1>Movie session</h1>
     <table class="mui-table mui-table--bordered event-infos">
@@ -105,20 +182,6 @@
       </tbody>
     </table>
     <h2>Proposed movies</h2>
-    <!-- <div class="mui-container movie">
-      <img src="https://image.tmdb.org/t/p/w300/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg" alt="Movie backdrop">
-      <div class="mui-panel">
-        <div class="mui-row">
-          <div class="mui-col-xs-10">
-            <h1>Batman Versus Superman</h1>
-            <p>Julie, Léa and Mathilde liked</b></p>
-          </div>
-          <div class="mui-col-xs-2">
-            <i class="material-icons md-48 icons_logo">favorite_border</i>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     <?php 
       if($query[0]->vote == 0)
@@ -140,7 +203,7 @@
           }
             ?>
            <div class="mui-container movie">
-             <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->backdrop_path ?>" alt="Movie backdrop">
+             <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][3] . $movie->backdrop_path ?>" alt="Movie backdrop" onerror='imageChange(this)'>
              <div class="mui-panel">
                <div class="mui-row">
                  <div class="mui-col-xs-10">
@@ -171,15 +234,35 @@
             }
               ?>
             <div class="mui-container movie">
-              <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][2] . $movie->backdrop_path ?>" alt="Movie backdrop">
+              <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][3] . $movie->backdrop_path ?>" alt="Movie backdrop " onerror='imageChange(this)'>
               <div class="mui-panel">
                 <div class="mui-row">
                   <div class="mui-col-xs-10">
                     <h1><?= $title ?></h1>
-                    <p><b><?= $_movie->likes ?> liked</b></p>
+                    <p><b>
+                    <?php 
+
+                      $voteCount = 0;
+
+                      foreach($query_vote as $_vote)
+                      {
+                        if($_vote->movie==$_movie->movie_id)
+                        {
+                          $voteCount++;
+                        }
+                      }
+
+                      echo $voteCount . ' liked';
+                    ?>
+                    </b></p>
                   </div>
                   <div class="mui-col-xs-2">
-                    <i class="material-icons md-48 icons_logo">favorite_border</i>
+                    <form action="#" method="POST">
+                      <input type="hidden" name="type" value="vote">
+                      <button name="whichMovie" value="<?= $_movie->movie_id ?>">
+                        <i class="material-icons md-48 icons_logo">favorite_border</i>
+                      </button>
+                    </form>
                   </div>
                   </div>
                 </div>
@@ -191,3 +274,4 @@
     ?>
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>

@@ -299,6 +299,14 @@ footer {
   .page-event .are-you-in i {
     padding-top: 5px; }
 
+.page-event .mui-container table img {
+  height: 100px; }
+.page-event .mui-container table h1 {
+  font-size: 18px;
+  line-height: 1; }
+.page-event .mui-container table .material-icons {
+  line-height: 1.5; }
+
 .page-myevents .empty-background {
   width: 300px;
   margin: auto; }

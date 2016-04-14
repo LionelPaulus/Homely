@@ -6,7 +6,7 @@
         </p>
       </div>
       <div class="mui-col-xs-1">
-        <img src="src/images/powered.png" alt="Powered by Themoviedb">
+        <img src="<?= URL ?>src/images/powered.png" alt="Powered by Themoviedb">
       </div>
     </div>
   </footer>

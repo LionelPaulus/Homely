@@ -25,6 +25,17 @@
 
   $data = $prepare->fetchAll();
 
+  $prepare = $pdo->prepare("SELECT * FROM movies LEFT JOIN rooms ON rooms.id = movies.event_id WHERE rooms.id = '$id'");
+  $prepare->execute();
+
+  $query_movie = $prepare->fetchAll();
+
+
+  $prepare = $pdo->prepare("SELECT * FROM votes WHERE event = '$id'");
+  $prepare->execute();
+
+  $query_vote = $prepare->fetchAll();
+
   if(!empty($_POST))
   {
   	if($_POST['type'] == 'participation')
@@ -48,11 +59,52 @@
 	  		}
 	  	}
   	}
+  	else if($_POST['type'] == 'vote')
+  	{
+  		$movieId = $_POST['whichMovie'];
+  		$prepare = $pdo->prepare("DELETE FROM votes WHERE event = '$id' AND user = '$user'");
+
+	  	$prepare->execute();
+
+  		$prepare = $pdo->prepare("INSERT INTO votes(event, movie, user) VALUES (:event, :movie, :user)");
+  		$prepare->bindValue('event', $id);
+  		$prepare->bindValue('movie', $movieId);
+  		$prepare->bindValue('user', $user);
+
+	  	$prepare->execute();
+
+	  	header('Location:'. $_SERVER['REDIRECT_URL']);
+	  	exit;
+  	}
+  	else if($_POST['type'] == 'remove')
+  	{
+  		$prepare = $pdo->prepare("DELETE FROM rooms WHERE id = '$id'");
+	  	$prepare->execute();
+
+	  	$prepare = $pdo->prepare("DELETE FROM votes WHERE event = '$id'");
+	  	$prepare->execute();
+
+	  	$prepare = $pdo->prepare("DELETE FROM movies WHERE event_id = '$id'");
+	  	$prepare->execute();
+
+	  	$prepare = $pdo->prepare("DELETE FROM guests WHERE room_id = '$id'");
+	  	$prepare->execute();
+
+	  	header('Location:' . URL);
+	  	exit;
+  	}
+  	else if($_POST['type'] == 'update')
+  	{
+  		$movies_id = $_POST['movies_id'];
+		$movies_type = $_POST['movies_type'];
+
+		$i = 0;
+
+		foreach($movies_id as $_movie) // FOREACH MOVIE INSERT INTO MOVIE TABL
+		{
+		}
+  	}
   }
 
-  $prepare = $pdo->prepare("SELECT * FROM movies LEFT JOIN rooms ON rooms.id = movies.event_id WHERE rooms.id = '$id'");
-  $prepare->execute();
-
-  $query_movie = $prepare->fetchAll();
 
   

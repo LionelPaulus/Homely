@@ -1,8 +1,10 @@
-.page-event .event-infos i {
-  margin-top: 2px;
-  position: absolute; }
-.page-event .event-infos td {
-  min-width: 30px; }
+.page-event .event-infos {
+  font-size: 18px; }
+  .page-event .event-infos i {
+    margin-top: 2px;
+    position: absolute; }
+  .page-event .event-infos td {
+    min-width: 30px; }
 .page-event .movie-card {
   color: inherit; }
 .page-event .movie {
@@ -26,7 +28,18 @@
     margin-bottom: 0px; }
 .page-event .mui--text-right {
   display: inline; }
-.page-event .event-infos {
-  font-size: 18px; }
+.page-event .are-you-in {
+  width: 164px;
+  margin: auto; }
+  .page-event .are-you-in i {
+    padding-top: 5px; }
+
+.page-event .mui-container table img {
+  height: 100px; }
+.page-event .mui-container table h1 {
+  font-size: 18px;
+  line-height: 1; }
+.page-event .mui-container table .material-icons {
+  line-height: 1.5; }
 
 /*# sourceMappingURL=event.css.map */
