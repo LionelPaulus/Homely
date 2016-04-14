@@ -11,7 +11,8 @@ define('USE_JQUERY', true);
 // DEFINE URL AUTOMATICALLY
 $file = "config/url.txt";
 $url = file_get_contents($file);
-$actual_url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+$actual_url = "http://".$_SERVER['HTTP_HOST'].$uri_parts[0];
 
 if(empty($_GET['q']) && ($url != $actual_url)){
   file_put_contents($file, $actual_url);

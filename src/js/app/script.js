@@ -103,3 +103,4 @@ var baseUrl   = 'http://api.themoviedb.org/3/',
     $("input[value='" + id + "']").remove();
     $("input[data-id='" + id + "']").remove();
   });
+

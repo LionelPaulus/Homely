@@ -84,8 +84,7 @@
      
     
 
-    
-      <?php 
+      <?php
         foreach($data as $_result){
           if($_result->id == $user)
           {
@@ -142,7 +141,7 @@
         <tr>
           <td><i class="material-icons md-48 icons_logo">event_available</i></td>
           <td>
-            <?php 
+            <?php
               $count = 0;
               foreach($data as $_result)
               {
@@ -162,7 +161,7 @@
         <tr>
           <td><i class="material-icons md-48 icons_logo">event_busy</i></td>
           <td>
-            <?php 
+            <?php
               $count = 0;
               foreach($data as $_result)
               {
@@ -183,11 +182,12 @@
     </table>
     <h2>Proposed movies</h2>
 
-    <?php 
+    <?php
       if($query[0]->vote == 0)
       {
         foreach($query_movie as $_movie)
         {
+          $event_id = $_movie->event_id;
           if($_movie->movie_type == 'movie'){
           $movie = $cache->get_data($_movie->movie_id, 'http://api.themoviedb.org/3/movie/' . $_movie->movie_id . '?api_key=' . THEMOVIEDB_API_KEY);
           $movie = json_decode($movie);
@@ -270,8 +270,13 @@
             <?php
           }
         }
-
     ?>
+    <div class="mui-textfield">
+      <input id="url" type="text" value="<?= url_shortener(URL."event/".$event_id) ?>" disabled>
+      <label>Event URL</label>
+    </div>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+<div class="action-button">
+  <div class="mui-btn mui-btn--fab mui-btn--danger" data-clipboard-target="#url" onclick="alert('Event URL copied !')"><i class="material-icons md-48 icons_logo">share</i></div>
+</div>

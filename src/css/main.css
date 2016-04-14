@@ -298,14 +298,21 @@ footer {
   margin: auto; }
   .page-event .are-you-in i {
     padding-top: 5px; }
-
-.page-event .mui-container table img {
+.page-event .page-event .mui-container table img {
   height: 100px; }
-.page-event .mui-container table h1 {
+.page-event .page-event .mui-container table h1 {
   font-size: 18px;
   line-height: 1; }
-.page-event .mui-container table .material-icons {
+.page-event .page-event .mui-container table .material-icons {
   line-height: 1.5; }
+.page-event .action-button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px; }
+  .page-event .action-button a {
+    font-size: 30px; }
+  .page-event .action-button i {
+    line-height: 2.4; }
 
 .page-myevents .empty-background {
   width: 300px;
