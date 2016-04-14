@@ -42,6 +42,10 @@
   {
   	if($_POST['type'] == 'participation')
   	{
+      if(empty($user)){
+        header('Location: '.URL);
+        exit;
+      }
   		if($query[0]->owner != $user){
 	  		if($_POST['choice'] == 'true')
 	  		{
@@ -81,7 +85,7 @@
           		$prepare->bindValue('room_id', $id);
           		$prepare->bindValue('participation', 0);
         	  	$prepare->execute();
-              
+
               header('Location:'. $_SERVER['REDIRECT_URL']);
     	  			exit;
             }
@@ -143,7 +147,7 @@
 		  $prepare = $pdo->prepare("DELETE FROM movies WHERE event_id = '$id'");
 		  $prepare->execute();
 
-  		foreach($movies_id as $_movie) 
+  		foreach($movies_id as $_movie)
   		{
   			$prepare = $pdo->prepare("INSERT INTO movies(event_id, movie_id, movie_type) VALUES (:event, :movie, :type)");
   	  	$prepare->bindValue('event', $id);
