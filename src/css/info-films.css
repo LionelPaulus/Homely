@@ -1,8 +1,8 @@
 .poster_image {
 	display:inline-block;
-	width:100%;
-	position:relative;
 	
+	position:relative;
+	max-width:100%;
 	height:auto;
 }
 
@@ -15,6 +15,9 @@
 }
 .container_background {
 	position:relative;
+	height:50%;
+	padding-left:0;
+	overflow:hidden;
 }
 
 
@@ -107,3 +110,12 @@
 	top:0;
 }
 
+@media screen and (max-width: 740px) {
+	.container_background {
+	position:relative;
+	height:25%;
+	padding-left:0;
+	overflow:hidden;
+}
+
+}
