@@ -56,4 +56,17 @@
       padding-top: 5px;
     }
   }
+  .action-button {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+
+    a {
+      font-size: 30px;
+    }
+
+    i {
+      line-height: 2.4;
+    }
+  }
 }
