@@ -3,7 +3,7 @@
   	require_once dirname(__DIR__) . '/vendor/autoload.php';
 
   	$class = "home";
-  	$title = 'Home';
+  	$title = 'Homely';
 
 	$fb = new Facebook\Facebook([
 	  'app_id' => '1706121249668764',
@@ -90,6 +90,6 @@
 	else
 	{
 		// Redirection link
-		$loginUrl = $helper->getLoginUrl('http://localhost:8888/Homely/', $permissions);
+		$loginUrl = $helper->getLoginUrl(URL, $permissions);
 	}
 
