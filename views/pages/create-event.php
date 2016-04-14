@@ -51,6 +51,7 @@
             foreach($errors as $_error): ?>
               <div class="mui--text-danger"><?= $_error ?></div>
             <?php endforeach;
-          endif; 
+          endif;
         ?>
+  </div>
 </div>
