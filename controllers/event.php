@@ -45,19 +45,47 @@
   		if($query[0]->owner != $user){
 	  		if($_POST['choice'] == 'true')
 	  		{
-	  			$prepare = $pdo->prepare("UPDATE guests SET participation = '1' WHERE user_id = '$user' AND guests.room_id = '$id'");
-	  			$prepare->execute();
+          foreach($data as $_result){
+            if($_result->id == $user)
+            {
+              $prepare = $pdo->prepare("UPDATE guests SET participation = '1' WHERE user_id = '$user' AND guests.room_id = '$id'");
+    	  			$prepare->execute();
 
-	  			header('Location:'. $_SERVER['REDIRECT_URL']);
-	  			exit;
+    	  			header('Location:'. $_SERVER['REDIRECT_URL']);
+    	  			exit;
+            }else{
+              $prepare = $pdo->prepare("INSERT INTO guests(user_id, room_id, participation) VALUES (:user_id, :room_id, :participation)");
+          		$prepare->bindValue('user_id', $user);
+          		$prepare->bindValue('room_id', $id);
+          		$prepare->bindValue('participation', 1);
+        	  	$prepare->execute();
+
+              header('Location:'. $_SERVER['REDIRECT_URL']);
+    	  			exit;
+            }
+          }
 	  		}
 	  		else
 	  		{
-	  			$prepare = $pdo->prepare("UPDATE guests SET participation = '0' WHERE user_id = '$user' AND guests.room_id = '$id'");
-	  			$prepare->execute();
+          foreach($data as $_result){
+            if($_result->id == $user)
+            {
+              $prepare = $pdo->prepare("UPDATE guests SET participation = '0' WHERE user_id = '$user' AND guests.room_id = '$id'");
+    	  			$prepare->execute();
 
-	  			header('Location:'. $_SERVER['REDIRECT_URL']);
-	  			exit;
+    	  			header('Location:'. $_SERVER['REDIRECT_URL']);
+    	  			exit;
+            }else{
+              $prepare = $pdo->prepare("INSERT INTO guests(user_id, room_id, participation) VALUES (:user_id, :room_id, :participation)");
+          		$prepare->bindValue('user_id', $user);
+          		$prepare->bindValue('room_id', $id);
+          		$prepare->bindValue('participation', 0);
+        	  	$prepare->execute();
+              
+              header('Location:'. $_SERVER['REDIRECT_URL']);
+    	  			exit;
+            }
+          }
 	  		}
 	  	}
   	}
