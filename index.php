@@ -3,6 +3,11 @@
 require 'config/config.php';
 require 'config/database.php';
 
+// Remove www.
+if(preg_match('/^www./', $_SERVER['HTTP_HOST'])){
+  header('Location: http://homely-app.com'.$_SERVER['REQUEST_URI']);
+}
+
 $q = empty($_GET['q']) ? '' : $_GET['q'];
 
 if($q == '')
