@@ -1,7 +1,7 @@
 <div class="mui-container">
   <div class="mui-panel">
 
-    <?php 
+    <?php
         if($query[0]->owner == $user)
         {
         ?>
@@ -13,7 +13,7 @@
             </button>
           </form>
           <br>
-          
+
           <div class="mui-textfield">
             <input type="text" placeholder="Movie name" class="movieChoice">
             <label>Modify movie list</label>
@@ -29,7 +29,7 @@
                     $movie  = $cache->get_data($_movie->movie_id, 'http://api.themoviedb.org/3/movie/' . $_movie->movie_id . '?api_key=' . THEMOVIEDB_API_KEY);
                     $movie  = json_decode($movie);
                     $title  = $movie->title;
-                    $type   = 'movie';  
+                    $type   = 'movie';
                   }
                   else
                   {
@@ -49,7 +49,7 @@
                         <h1><?= $title ?></h1>
                       </div>
                     </td>
-                    <td> 
+                    <td>
                       <div class="mui--text-right remove">
                         <button type="button" class="mui-btn mui-btn--raised mui-btn--danger">
                           <i class="material-icons md-48 icons_logo">delete</i>
@@ -72,7 +72,7 @@
         }
         else
         {
-        ?>  
+        ?>
     <h2 class="mui--text-center">Are you in ?</h2>
     <div class="are-you-in">
       <form action="#" method="POST">
@@ -81,8 +81,8 @@
         <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
       </form>
     </div>
-     
-    
+
+
 
       <?php
         foreach($data as $_result){
@@ -124,9 +124,7 @@
           <td>
             <?= $query[0]->place ?>
             <div class="mui--text-right">
-              <a href="https://maps.google.com/maps?q=<?= $query[0]->place?>" target="_blank">
-                <button type="button" class="mui-btn mui-btn--small">Open in Google Maps</button>
-              </a>
+              <a href="https://maps.google.com/maps?q=<?= $query[0]->place?>" target="_blank"class="mui-btn mui-btn--small">Open in Google Maps</a>
             </div>
           </td>
         </tr>
@@ -240,7 +238,7 @@
                   <div class="mui-col-xs-10">
                     <h1><?= $title ?></h1>
                     <p><b>
-                    <?php 
+                    <?php
 
                       $voteCount = 0;
 
