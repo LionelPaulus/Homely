@@ -3,17 +3,17 @@
   require 'vendor/autoload.php';
   $cache = new Gilbitron\Util\SimpleCache();
   require 'functions/config_tmdb.php';
+  require 'functions/url_shortener.php';
 
   $title = 'Homely';
   $class = 'event';
 
   $errors = array();
 
-  $uri = explode('/', $_SERVER['REQUEST_URI']);
-
   $user = $_SESSION['user']['id'];
 
-  $id = $uri[3];
+  preg_match('/[0-9]+$/', $q, $match);
+  $id = $match[0];
 
   $prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN users ON rooms.owner = users.id WHERE rooms.id = '$id'");
   $prepare->execute();
