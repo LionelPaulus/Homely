@@ -9,7 +9,25 @@
 
 	$id = $_SESSION['user']['id'];
 
+
+	// JOIN ROOMS & GUESTS 
 	$prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN guests ON rooms.id = guests.room_id WHERE rooms.owner = '$id' OR user_id = '$id' ORDER BY day DESC");
 	$prepare->execute();
 
 	$query = $prepare->fetchAll();
+
+	$rooms = array();
+
+	foreach($query as $_result) // GET ALL ROOM ID ABOUT SESSION USER
+	{
+		array_push($rooms, $_result->id);
+	}
+
+	$rooms = implode(',', $rooms);
+
+	// JOIN USERS & GUESTS
+
+	$prepare = $pdo->prepare("SELECT * FROM users LEFT JOIN guests ON users.id = guests.user_id WHERE room_id IN ($rooms)");
+	$prepare->execute();
+
+	$data = $prepare->fetchAll();

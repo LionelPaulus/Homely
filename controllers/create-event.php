@@ -4,6 +4,7 @@
 
 	$errors = array();
 
+	// ERRORS CHECKING ... 
 	if(!empty($_POST))
 	{
 		$date 	= strtotime($_POST['date']);
@@ -55,6 +56,8 @@
 			$errors['desc'] = 'Your description can\'t exceed 1000 characters';
 		}
 
+		// ... END OF ERRORS CHECKING
+
 		if(empty($errors))
 		{
 			$prepare = $pdo->prepare('INSERT INTO rooms(owner, day, time, place, description, vote, actual_movie) VALUES (:owner, :day, :time, :place, :description, :vote, :actual_movie)');
@@ -75,7 +78,7 @@
 
 			$count = 0;
 
-			foreach($query as $_results)
+			foreach($query as $_results) // GET LAST ID 
 			{
 				if($count < $_results->id)
 				{
@@ -84,13 +87,12 @@
 			}
 
 			$date 	= '';
-			$owner 	= '';
 			$place	= '';
 			$desc 	= '';
 			$vote 	= '';
 			$time	= '';
 
-			foreach($movies as $_movie)
+			foreach($movies as $_movie) // FOREACH MOVIE INSERT INTO MOVIE TABL
 			{
 				$prepare = $pdo->prepare('INSERT INTO movies(event_id, movie_id) VALUES (:event, :movie)');
 				$prepare->bindValue(':event', $count);
@@ -98,6 +100,14 @@
 
 				$prepare->execute();
 			}
+			// INESRT OWNER'S PARTICIPATION
+			$prepare = $pdo->prepare('INSERT INTO guests(user_id, room_id) VALUES (:user, :room)');
+			$prepare->bindValue(':user', $owner);
+			$prepare->bindValue(':room', $count);
+
+			$prepare->execute();
+
+			$owner 	= '';
 
 
 

@@ -47,7 +47,7 @@
       <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
     </form>
 
-    <?php if(!empty($errors)):
+    <?php if(!empty($errors)): // ERRORS
             foreach($errors as $_error): ?>
               <div class="mui--text-danger"><?= $_error ?></div>
             <?php endforeach;
