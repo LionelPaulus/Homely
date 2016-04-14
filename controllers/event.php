@@ -12,7 +12,7 @@
 
   $user = $_SESSION['user']['id'];
 
-  preg_match('/[0-9]+$/', $q, $match);
+  preg_match('/[0-9]+/', $q, $match);
   $id = $match[0];
 
   $prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN users ON rooms.owner = users.id WHERE rooms.id = '$id'");
@@ -55,4 +55,4 @@
 
   $query_movie = $prepare->fetchAll();
 
-  
+
