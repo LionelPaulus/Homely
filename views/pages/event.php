@@ -255,7 +255,9 @@
           }
             ?>
            <div class="mui-container movie">
-             <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][3] . $movie->backdrop_path ?>" alt="Movie backdrop" onerror='imageChange(this)'>
+             <a href="<?= URL ?>movie/<?= $_movie->movie_id ?>">
+              <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][3] . $movie->backdrop_path ?>" alt="Movie backdrop" onerror='imageChange(this)'>
+             </a>
              <div class="mui-panel">
                <div class="mui-row">
                  <div class="mui-col-xs-10">
@@ -286,7 +288,9 @@
             }
               ?>
             <div class="mui-container movie" id="<?= $_movie->movie_id ?>">
-              <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][3] . $movie->backdrop_path ?>" alt="Movie backdrop " onerror='imageChange(this)'>
+              <a href="<?= URL ?>movie/<?= $_movie->movie_id ?>">
+                <img src="<?php echo $config['images']['base_url'] . $config['images']['backdrop_sizes'][3] . $movie->backdrop_path ?>" alt="Movie backdrop " onerror='imageChange(this)'>
+              </a>
               <div class="mui-panel">
                 <div class="mui-row">
                   <div class="mui-col-xs-10">
