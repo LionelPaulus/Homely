@@ -8,15 +8,17 @@
 
           <form action="#" method="POST">
             <input type="hidden" name="type" value="remove">
-            <button class="mui-btn mui-btn--danger">
-              Supprimer cet évènement
-            </button>
+            <center>
+              <button class="mui-btn mui-btn--danger">
+                Delete this event
+              </button>
+            </center>
           </form>
           <br>
 
           <div class="mui-textfield">
             <input type="text" placeholder="Movie name" class="movieChoice">
-            <label>Modify movie list</label>
+            <label>Add a movie to the list</label>
             <br>
           </div>
 
@@ -78,8 +80,35 @@
     <div class="are-you-in">
       <form action="#" method="POST">
         <input type="hidden" name="type" value="participation">
-        <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
-        <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
+        <?php
+          foreach($data as $_result){
+            if($_result->id == $user)
+            {
+              if($_result->participation == 0)
+              {
+                ?>
+                <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
+                <button class="mui-btn mui-btn--danger" name="choice" value="false" disabled><i class="material-icons md-48 icons_logo">clear</i></button>
+                <?php
+              }
+              else
+              {
+                ?>
+                <button class="mui-btn mui-btn--primary" name="choice" value="true" disabled><i class="material-icons md-48 icons_logo">done</i></button>
+                <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
+                <?php
+              }
+            } else {
+              ?>
+              <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
+              <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
+              <?php
+            }
+          }
+          if(empty($data)){ ?>
+            <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
+            <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
+          <? } ?>
       </form>
     </div>
 
@@ -124,9 +153,7 @@
           <td><i class="material-icons md-48 icons_logo">location_on</i></td>
           <td>
             <?= $query[0]->place ?>
-            <div class="mui--text-right">
-              <a href="https://maps.google.com/maps?q=<?= $query[0]->place?>" target="_blank"class="mui-btn mui-btn--small">Open in Google Maps</a>
-            </div>
+            <a href="https://maps.google.com/maps?q=<?= $query[0]->place?>" target="_blank"class="mui-btn mui-btn--small">Open in Google Maps</a>
           </td>
         </tr>
         <tr>

@@ -263,6 +263,8 @@ footer {
       margin-top: 20px;
       width: 170px; }
 
+.page-event .remove i {
+  line-height: 1.5; }
 .page-event .event-infos {
   font-size: 18px; }
   .page-event .event-infos i {
@@ -291,8 +293,6 @@ footer {
     font-size: 20px;
     margin-top: 0px;
     margin-bottom: 0px; }
-.page-event .mui--text-right {
-  display: inline; }
 .page-event .are-you-in {
   width: 164px;
   margin: auto; }
