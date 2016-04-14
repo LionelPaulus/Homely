@@ -62,8 +62,9 @@
 
 		if(empty($errors))
 		{
-			$prepare = $pdo->prepare('INSERT INTO rooms(owner, date, place, description, vote, actual_movie) VALUES (:owner, :date, :place, :description, :vote, :actual_movie)');
+			$prepare = $pdo->prepare('INSERT INTO rooms(id, owner, date, place, description, vote, actual_movie) VALUES (:id, :owner, :date, :place, :description, :vote, :actual_movie)');
 
+			$prepare->bindValue('id', uniqid());
 			$prepare->bindValue('owner', $owner);
 			$prepare->bindValue('date', $date);
 			$prepare->bindValue('place', $place);

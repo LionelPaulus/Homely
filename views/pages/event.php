@@ -58,13 +58,14 @@
                     </td>
                   </tr>
 
-                  <input type="hidden" name="movies-id[]" value="<?= $movie->id ?>">
+                  <input type="hidden" name="movies_id[]" value="<?= $movie->id ?>">
                   <input type="hidden" name="movies_type[]" value="<?= $type ?>" data-id="<?= $movie->id ?>">
 
                <?php } ?>
               </tbody>
             </table>
             <input type="hidden" name="type" value="update">
+            <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
           </form>
 
 

@@ -12,8 +12,8 @@
 
   $user = $_SESSION['user']['id'];
 
-  preg_match('/[0-9]+/', $q, $match);
-  $id = $match[0];
+  $uri = explode('/', $_SERVER['REQUEST_URI']);
+  $id = $uri[3];
 
   $prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN users ON rooms.owner = users.id WHERE rooms.id = '$id'");
   $prepare->execute();
@@ -100,8 +100,20 @@
 
 		$i = 0;
 
-		foreach($movies_id as $_movie) // FOREACH MOVIE INSERT INTO MOVIE TABL
+		$prepare = $pdo->prepare("DELETE FROM movies WHERE event_id = '$id'");
+		$prepare->execute();
+
+		foreach($movies_id as $_movie) 
 		{
+			$prepare = $pdo->prepare("INSERT INTO movies(event_id, movie_id, movie_type) VALUES (:event, :movie, :type)");
+	  		$prepare->bindValue('event', $id);
+	  		$prepare->bindValue('movie', $_movie);
+	  		$prepare->bindValue('type', $movies_type[$i]);
+
+		  	$prepare->execute();
+
+		  	header('Location:'. $_SERVER['REDIRECT_URL']);
+	  		exit;
 		}
   	}
   }
