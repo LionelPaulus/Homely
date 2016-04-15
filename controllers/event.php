@@ -169,10 +169,10 @@
 
 
   		  $prepare->execute();
-
-  		  header('Location:'. $_SERVER['REDIRECT_URL']);
-  	  	exit;
   		}
+
+      header('Location:'. $_SERVER['REDIRECT_URL']);
+      exit;
   	}
     else if($_POST['type'] == 'triggerVote')
     {
