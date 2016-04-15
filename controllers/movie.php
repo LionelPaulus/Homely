@@ -1,4 +1,9 @@
 <?php
+	if(!isset($_SESSION['user']))
+	{
+		header('Location:' . URL);
+		exit;
+	}
 
 	require 'vendor/autoload.php';
 	$cache = new Gilbitron\Util\SimpleCache();
