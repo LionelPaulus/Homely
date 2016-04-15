@@ -2,7 +2,7 @@
 
   if(!isset($_SESSION['user']))
   {
-    header('Location:' . URL);
+    header('Location:' . URL . 'home/');
     exit;
   }
 
@@ -10,6 +10,15 @@
   $cache = new Gilbitron\Util\SimpleCache();
   require 'functions/config_tmdb.php';
   require 'functions/url_shortener.php';
+
+  preg_match('/event\/[0-9|A-z]+/', $q, $match);
+  $id = str_replace('event/', '', $match[0]);
+
+  if(!isset($_SESSION['user']))
+  {
+    header('Location:' . URL . 'home/' . $id);
+    exit;
+  }
 
   $title = 'Homely';
   $class = 'event';
@@ -20,8 +29,6 @@
 
   $user = $_SESSION['user']['id'];
 
-  preg_match('/event\/[0-9|A-z]+/', $q, $match);
-  $id = str_replace('event/', '', $match[0]);
 
   $prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN users ON rooms.owner = users.id WHERE rooms.id = '$id'");
   $prepare->execute();

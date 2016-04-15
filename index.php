@@ -11,7 +11,7 @@ if(preg_match('/^www./', $_SERVER['HTTP_HOST'])){
 $q = empty($_GET['q']) ? '' : $_GET['q'];
 
 if($q == '')
-  $page = 'home';
+	$page = 'home';
 else if($q == 'create-event')
   $page = 'create-event';
 else if($q =='myevents')
