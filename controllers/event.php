@@ -26,7 +26,7 @@
 
   $query = $prepare->fetchAll();
 
-  $prepare = $pdo->prepare("SELECT * FROM guests LEFT JOIN users ON guests.user_id = users.id WHERE guests.room_id = '$id'");
+  $prepare = $pdo->prepare("SELECT * FROM guests LEFT JOIN users ON guests.user_id = users.id WHERE guests.room_id = '$id' AND guests.user_id = '$user'");
   $prepare->execute();
 
   $data = $prepare->fetchAll();
@@ -55,46 +55,40 @@
   		if($query[0]->owner != $user){
 	  		if($_POST['choice'] == 'true')
 	  		{
-          foreach($data as $_result){
-            if($_result->id == $user)
-            {
-              $prepare = $pdo->prepare("UPDATE guests SET participation = '1' WHERE user_id = '$user' AND guests.room_id = '$id'");
-    	  			$prepare->execute();
+          if(!empty($data)){
+            $prepare = $pdo->prepare("UPDATE guests SET participation = '1' WHERE user_id = '$user' AND guests.room_id = '$id'");
+            $prepare->execute();
 
-    	  			header('Location:'. $_SERVER['REDIRECT_URL']);
-    	  			exit;
-            }else{
-              $prepare = $pdo->prepare("INSERT INTO guests(user_id, room_id, participation) VALUES (:user_id, :room_id, :participation)");
-          		$prepare->bindValue('user_id', $user);
-          		$prepare->bindValue('room_id', $id);
-          		$prepare->bindValue('participation', 1);
-        	  	$prepare->execute();
+            header('Location:'. $_SERVER['REDIRECT_URL']);
+            exit;
+          }else {
+            $prepare = $pdo->prepare("INSERT INTO guests(user_id, room_id, participation) VALUES (:user_id, :room_id, :participation)");
+            $prepare->bindValue('user_id', $user);
+            $prepare->bindValue('room_id', $id);
+            $prepare->bindValue('participation', 1);
+            $prepare->execute();
 
-              header('Location:'. $_SERVER['REDIRECT_URL']);
-    	  			exit;
-            }
+            header('Location:'. $_SERVER['REDIRECT_URL']);
+            exit;
           }
 	  		}
 	  		else
 	  		{
-          foreach($data as $_result){
-            if($_result->id == $user)
-            {
-              $prepare = $pdo->prepare("UPDATE guests SET participation = '0' WHERE user_id = '$user' AND guests.room_id = '$id'");
-    	  			$prepare->execute();
+          if(!empty($data)){
+            $prepare = $pdo->prepare("UPDATE guests SET participation = '0' WHERE user_id = '$user' AND guests.room_id = '$id'");
+            $prepare->execute();
 
-    	  			header('Location:'. $_SERVER['REDIRECT_URL']);
-    	  			exit;
-            }else{
-              $prepare = $pdo->prepare("INSERT INTO guests(user_id, room_id, participation) VALUES (:user_id, :room_id, :participation)");
-          		$prepare->bindValue('user_id', $user);
-          		$prepare->bindValue('room_id', $id);
-          		$prepare->bindValue('participation', 0);
-        	  	$prepare->execute();
+            header('Location:'. $_SERVER['REDIRECT_URL']);
+            exit;
+          }else{
+            $prepare = $pdo->prepare("INSERT INTO guests(user_id, room_id, participation) VALUES (:user_id, :room_id, :participation)");
+            $prepare->bindValue('user_id', $user);
+            $prepare->bindValue('room_id', $id);
+            $prepare->bindValue('participation', 0);
+            $prepare->execute();
 
-              header('Location:'. $_SERVER['REDIRECT_URL']);
-    	  			exit;
-            }
+            header('Location:'. $_SERVER['REDIRECT_URL']);
+            exit;
           }
 	  		}
 	  	}
@@ -187,7 +181,3 @@
       exit;
     }
   }
-
-
-
-
