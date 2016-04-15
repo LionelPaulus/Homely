@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Mer 13 Avril 2016 à 21:14
+-- Généré le :  Ven 15 Avril 2016 à 15:00
 -- Version du serveur :  5.5.42
 -- Version de PHP :  5.6.10
 
@@ -27,9 +27,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `guests` (
-  `id` int(11) NOT NULL,
+  `guest_id` int(11) NOT NULL,
   `user_id` bigint(20) NOT NULL,
-  `room_id` int(11) NOT NULL,
+  `room_id` varchar(100) NOT NULL,
   `participation` enum('0','1','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,9 +40,10 @@ CREATE TABLE `guests` (
 --
 
 CREATE TABLE `movies` (
-  `event_id` int(11) NOT NULL,
-  `vote` int(11) NOT NULL,
-  `movie_id` int(11) NOT NULL
+  `line_id` int(11) NOT NULL,
+  `event_id` varchar(100) NOT NULL,
+  `movie_id` int(11) NOT NULL,
+  `movie_type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -52,12 +53,11 @@ CREATE TABLE `movies` (
 --
 
 CREATE TABLE `rooms` (
-  `id` int(11) NOT NULL,
+  `id` varchar(100) NOT NULL,
   `owner` bigint(255) NOT NULL,
-  `day` int(11) NOT NULL,
-  `time` time NOT NULL,
   `guests` text NOT NULL,
   `place` varchar(255) NOT NULL,
+  `date` int(11) NOT NULL,
   `description` text NOT NULL,
   `vote` enum('0','1','','') NOT NULL DEFAULT '0',
   `actual_movie` bigint(20) NOT NULL
@@ -77,6 +77,19 @@ CREATE TABLE `users` (
   `picture` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `votes`
+--
+
+CREATE TABLE `votes` (
+  `vote_id` bigint(11) NOT NULL,
+  `event` varchar(100) NOT NULL,
+  `movie` int(11) NOT NULL,
+  `user` bigint(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Index pour les tables exportées
 --
@@ -85,7 +98,13 @@ CREATE TABLE `users` (
 -- Index pour la table `guests`
 --
 ALTER TABLE `guests`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`guest_id`);
+
+--
+-- Index pour la table `movies`
+--
+ALTER TABLE `movies`
+  ADD PRIMARY KEY (`line_id`);
 
 --
 -- Index pour la table `rooms`
@@ -100,6 +119,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `votes`
+--
+ALTER TABLE `votes`
+  ADD PRIMARY KEY (`vote_id`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -107,12 +132,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `guests`
 --
 ALTER TABLE `guests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `rooms`
+-- AUTO_INCREMENT pour la table `movies`
 --
-ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `movies`
+  MODIFY `line_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `votes`
+--
+ALTER TABLE `votes`
+  MODIFY `vote_id` bigint(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
