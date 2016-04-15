@@ -89,10 +89,8 @@
 			exit;
 		}
 		else
-		{
-			$idmov = $_SESSION['redirect'];
-			
-			header('Location: event/' . $idmov);
+		{	
+			header('Location: event/' . $_SESSION['redirect']);
 			exit;
 		}
 

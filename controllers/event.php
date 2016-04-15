@@ -11,6 +11,11 @@
   $title = 'Homely';
   $class = 'event';
 
+  if(isset($_SESSION['redirect']))
+  {
+    $_SESSION['redirect'] = 0;
+  }
+
   $errors = array();
 
   $actual = 0;
