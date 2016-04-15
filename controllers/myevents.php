@@ -16,14 +16,10 @@
 
 
 	// JOIN ROOMS & GUESTS 
-	$prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN guests ON rooms.id = guests.room_id LEFT JOIN movies ON rooms.actual_movie = movies.movie_id WHERE rooms.owner = '$id' OR user_id = '$id' ORDER BY date DESC");
+	$prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN guests ON rooms.id = guests.room_id LEFT JOIN movies ON rooms.actual_movie = movies.movie_id WHERE user_id = '$id' ORDER BY date DESC");
 	$prepare->execute();
 
 	$query = $prepare->fetchAll();
-
-	echo '<pre>';
-	print_r($query);
-	echo '</pre>';
 
 	$rooms = array();
 
