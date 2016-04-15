@@ -21,6 +21,8 @@
 
 	$query = $prepare->fetchAll();
 
+	print_r($query);
+
 	$rooms = array();
 
 	foreach($query as $_result) // GET ALL ROOM ID ABOUT SESSION USER
