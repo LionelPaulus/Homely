@@ -182,6 +182,12 @@
           </td>
         </tr>
         <tr>
+          <td><i class="material-icons md-48 icons_logo">description</i></td>
+          <td>
+            <?= $query[0]->description ?>
+          </td>
+        </tr>
+        <tr>
           <td><i class="material-icons md-48 icons_logo">today</i></td>
           <td>
               <?= date("F j", $query[0]->date)?>
