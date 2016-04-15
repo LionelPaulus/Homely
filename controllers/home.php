@@ -83,15 +83,19 @@
 		$_SESSION['user']['name'] = $profile['first_name'] . ' ' . $profile['last_name'];
 		$_SESSION['user']['id'] = $profile['id'];
 
-		if(!isset($_SESSION['redirect']) || $_SESSION['redirect'] = 0)
+		$idEvent = $_COOKIE['redirect'];
+
+		if(empty($idEvent))
 		{
 			header('Location: myevents');
 			exit;
 		}
 		else
 		{	
-			header('Location: event/' . $_SESSION['redirect']);
+			setcookie('redirect', '', 1);
+			header('Location: event/' . $idEvent);
 			exit;
+
 		}
 
 	}

@@ -11,11 +11,6 @@
   $title = 'Homely';
   $class = 'event';
 
-  if(isset($_SESSION['redirect']))
-  {
-    $_SESSION['redirect'] = 0;
-  }
-
   $errors = array();
 
   $actual = 0;
@@ -52,7 +47,7 @@
   	if($_POST['type'] == 'participation')
   	{
       if(empty($user)){
-        $_SESSION['redirect'] = $id;
+        setcookie("redirect", $id, time()+3600, '/');
 
         header('Location: '.URL);
         exit;
