@@ -21,7 +21,9 @@
 
 	$query = $prepare->fetchAll();
 
+	echo '<pre>';
 	print_r($query);
+	echo '</pre>';
 
 	$rooms = array();
 
