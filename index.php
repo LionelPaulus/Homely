@@ -3,6 +3,11 @@
 require 'config/config.php';
 require 'config/database.php';
 
+// SEND EMAIL BRUNO & MATHIEU
+// require 'controllers/functions/send_email.php';
+// send_email_reminder("bruno.simon@hetic.net", "Bruno", "Brad Pitt", "9PM", "http://homely-app.com/myevents");
+// send_email_reminder("mathieu.letyrant@gmail.com", "Mathieu", "Brad Pitt", "9PM", "http://homely-app.com/myevents");
+
 // Remove www.
 if(preg_match('/^www./', $_SERVER['HTTP_HOST'])){
   header('Location: http://homely-app.com'.$_SERVER['REQUEST_URI']);

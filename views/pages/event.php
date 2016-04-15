@@ -105,35 +105,8 @@
     <div class="are-you-in">
       <form action="#" method="POST">
         <input type="hidden" name="type" value="participation">
-        <?php
-          foreach($data as $_result){
-            if($_result->id == $user)
-            {
-              if($_result->participation == 0)
-              { $voted = true;
-                ?>
-                <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
-                <button class="mui-btn mui-btn--danger" name="choice" value="false" disabled><i class="material-icons md-48 icons_logo">clear</i></button>
-                <?php
-              }
-              else
-              { $voted = true;
-                ?>
-                <button class="mui-btn mui-btn--primary" name="choice" value="true" disabled><i class="material-icons md-48 icons_logo">done</i></button>
-                <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
-                <?php
-              }
-            } elseif(empty($voted)) { $voted = true;
-              ?>
-              <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
-              <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
-              <?php
-            }
-          }
-          if(empty($data)){ ?>
-            <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
-            <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
-          <? } ?>
+        <button class="mui-btn mui-btn--primary" name="choice" value="true"><i class="material-icons md-48 icons_logo">done</i></button>
+        <button class="mui-btn mui-btn--danger" name="choice" value="false"><i class="material-icons md-48 icons_logo">clear</i></button>
       </form>
     </div>
 

@@ -5,8 +5,8 @@
   	$title = 'Homely';
 
 	$fb = new Facebook\Facebook([
-	  'app_id' => '1706121249668764',
-	  'app_secret' => '405b37617054bf1117d16a05556d765f',
+	  'app_id' => '984573141638694',
+	  'app_secret' => 'f766ca0e588e54e1f06759832f0a7788',
 	  'default_graph_version' => 'v2.4',
 	  ]);
 	$helper = $fb->getRedirectLoginHelper();
@@ -104,4 +104,3 @@
 		// Redirection link
 		$loginUrl = $helper->getLoginUrl(URL, $permissions);
 	}
-
