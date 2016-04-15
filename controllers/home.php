@@ -1,5 +1,4 @@
 <?php
-
   	require_once dirname(__DIR__) . '/vendor/autoload.php';
 
   	$class = "home";
@@ -12,6 +11,8 @@
 	  ]);
 	$helper = $fb->getRedirectLoginHelper();
 	$permissions = ['email']; // Optional
+
+	$idE = 'essaye';
 
 	try {
 		if (isset($_SESSION['facebook_access_token'])) {
@@ -84,8 +85,19 @@
 		$_SESSION['user']['name'] = $profile['first_name'] . ' ' . $profile['last_name'];
 		$_SESSION['user']['id'] = $profile['id'];
 
-		header('Location: myevents');
-		exit;
+		if(!isset($idE) || $idE = 0)
+		{
+			header('Location: myevents');
+			exit;
+		}
+		else
+		{
+			$idmov = $_SESSION['redirect'];
+			
+			header('Location: event/' . $idmov);
+			exit;
+		}
+
 	}
 	else
 	{

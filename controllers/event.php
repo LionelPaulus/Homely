@@ -1,11 +1,5 @@
 <?php
 
-  if(!isset($_SESSION['user']))
-  {
-    header('Location:' . URL . 'home/');
-    exit;
-  }
-
   require 'vendor/autoload.php';
   $cache = new Gilbitron\Util\SimpleCache();
   require 'functions/config_tmdb.php';
@@ -14,12 +8,6 @@
   preg_match('/event\/[0-9|A-z]+/', $q, $match);
   $id = str_replace('event/', '', $match[0]);
 
-  if(!isset($_SESSION['user']))
-  {
-    header('Location:' . URL . 'home/' . $id);
-    exit;
-  }
-
   $title = 'Homely';
   $class = 'event';
 
@@ -27,7 +15,10 @@
 
   $actual = 0;
 
-  $user = $_SESSION['user']['id'];
+  if(isset($_SESSION['user']))
+    $user = $_SESSION['user']['id'];
+  else
+    $user = 0;
 
 
   $prepare = $pdo->prepare("SELECT * FROM rooms LEFT JOIN users ON rooms.owner = users.id WHERE rooms.id = '$id'");
@@ -56,6 +47,8 @@
   	if($_POST['type'] == 'participation')
   	{
       if(empty($user)){
+        $_SESSION['redirect'] = $id;
+
         header('Location: '.URL);
         exit;
       }
@@ -108,30 +101,33 @@
   	}
   	else if($_POST['type'] == 'vote')
   	{
-  		$movieId = $_POST['whichMovie'];
+      if(isset($_SESSION['user']))
+      {
+    		$movieId = $_POST['whichMovie'];
 
-  		$prepare = $pdo->prepare("SELECT * FROM votes WHERE event = '$id' AND movie = '$movieId'");
-  		$prepare->execute();
-  		$vote_data = $prepare->fetchAll();
+    		$prepare = $pdo->prepare("SELECT * FROM votes WHERE event = '$id' AND movie = '$movieId'");
+    		$prepare->execute();
+    		$vote_data = $prepare->fetchAll();
 
-  		if((count($vote_data)+1) >= $_POST['max'])
-  		{
-  			$prepare = $pdo->prepare("UPDATE rooms SET actual_movie = '$movieId' WHERE id = '$id'");
-  			$prepare->execute();
-  		}
+    		if((count($vote_data)+1) >= $_POST['max'])
+    		{
+    			$prepare = $pdo->prepare("UPDATE rooms SET actual_movie = '$movieId' WHERE id = '$id'");
+    			$prepare->execute();
+    		}
 
-  		$prepare = $pdo->prepare("DELETE FROM votes WHERE event = '$id' AND user = '$user'");
-	  	$prepare->execute();
+    		$prepare = $pdo->prepare("DELETE FROM votes WHERE event = '$id' AND user = '$user'");
+  	  	$prepare->execute();
 
-  		$prepare = $pdo->prepare("INSERT INTO votes(event, movie, user) VALUES (:event, :movie, :user)");
-  		$prepare->bindValue('event', $id);
-  		$prepare->bindValue('movie', $movieId);
-  		$prepare->bindValue('user', $user);
+    		$prepare = $pdo->prepare("INSERT INTO votes(event, movie, user) VALUES (:event, :movie, :user)");
+    		$prepare->bindValue('event', $id);
+    		$prepare->bindValue('movie', $movieId);
+    		$prepare->bindValue('user', $user);
 
-	  	$prepare->execute();
+  	  	$prepare->execute();
 
-	  	header('Location:'. $_SERVER['REDIRECT_URL'] . '#' . $movieId);
-	  	exit;
+  	  	header('Location:'. $_SERVER['REDIRECT_URL'] . '#' . $movieId);
+  	  	exit;
+      }
   	}
   	else if($_POST['type'] == 'remove')
   	{
