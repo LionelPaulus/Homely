@@ -12,8 +12,6 @@
 	$helper = $fb->getRedirectLoginHelper();
 	$permissions = ['email']; // Optional
 
-	$idE = 'essaye';
-
 	try {
 		if (isset($_SESSION['facebook_access_token'])) {
 			$accessToken = $_SESSION['facebook_access_token'];
@@ -85,7 +83,7 @@
 		$_SESSION['user']['name'] = $profile['first_name'] . ' ' . $profile['last_name'];
 		$_SESSION['user']['id'] = $profile['id'];
 
-		if(!isset($idE) || $idE = 0)
+		if(!isset($_SESSION['redirect']) || $_SESSION['redirect'] = 0)
 		{
 			header('Location: myevents');
 			exit;
