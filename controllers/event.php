@@ -26,7 +26,7 @@
 
   $query = $prepare->fetchAll();
 
-  $prepare = $pdo->prepare("SELECT * FROM guests LEFT JOIN users ON guests.user_id = users.id WHERE guests.room_id = '$id' AND guests.user_id = '$user'");
+  $prepare = $pdo->prepare("SELECT * FROM guests LEFT JOIN users ON guests.user_id = users.id WHERE guests.room_id = '$id'");
   $prepare->execute();
 
   $data = $prepare->fetchAll();
