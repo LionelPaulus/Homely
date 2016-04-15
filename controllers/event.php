@@ -30,10 +30,6 @@
   $prepare->execute();
 
   $data = $prepare->fetchAll();
-  
-  echo '<pre>';
-  print_r($data);
-  echo '</pre>';
 
   $prepare = $pdo->prepare("SELECT * FROM movies LEFT JOIN rooms ON rooms.id = movies.event_id WHERE rooms.id = '$id'");
   $prepare->execute();
