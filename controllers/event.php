@@ -55,13 +55,21 @@
   		if($query[0]->owner != $user){
 	  		if($_POST['choice'] == 'true')
 	  		{
-          if(!empty($data)){
+          foreach($data as $_data){
+            if($_data->user_id == $user)
+            {
+
+            $participation = 1;
             $prepare = $pdo->prepare("UPDATE guests SET participation = '1' WHERE user_id = '$user' AND guests.room_id = '$id'");
             $prepare->execute();
 
             header('Location:'. $_SERVER['REDIRECT_URL']);
             exit;
-          }else {
+            }
+          }
+
+          if(empty($participation))
+          {
             $prepare = $pdo->prepare("INSERT INTO guests(user_id, room_id, participation) VALUES (:user_id, :room_id, :participation)");
             $prepare->bindValue('user_id', $user);
             $prepare->bindValue('room_id', $id);
